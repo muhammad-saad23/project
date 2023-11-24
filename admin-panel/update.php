@@ -4,15 +4,15 @@ include ("includes/topbar.php");
 include ("includes/sidebar.php");
 include("../config.php");
 
-$lawyer_id=$_GET['id'];
+$law_id=$_GET['id'];
 
-$select_data="SELECT * FROM `lawyer` as l inner join `cases` as c on l.case=c.id where l.case='$lawyer_id'";
-$query=mysqli_query($connection,$select_data);
+$query="SELECT*FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where l.id='$law_id'";
+$result=mysqli_query($connection,$query);
 
-
-    if (mysqli_num_rows($query)>0) {
-        while ($data=mysqli_fetch_assoc($query)) {
-              
+if (mysqli_num_rows($result)>0) {
+  while ($data=mysqli_fetch_assoc($result)) {
+    
+  
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $query=mysqli_query($connection,$select_data);
     <h1 class="mt-3 ms-3">Update Data</h1>
     <div class="container mt-5">
         
-    <form action="./updatelawyer.php" method="POST" class="form-group" enctype="multipart/form-data">
+    <form action="updatelawyer.php" method="POST" class="form-group" enctype="multipart/form-data">
         <div class="row form-group">
             <div class="col-sm-6 mb-3 mb-sm-0">
     <label for="name">Name</label>
@@ -61,22 +61,22 @@ $query=mysqli_query($connection,$select_data);
     <label for="phone">Phone</label>
     <input type="number" class="form-control" name="phone" id="phone" required value="<?php echo $data['phone']?>">
     <br>
-    <label for="address">Adress</label>
+    <label for="address">Address</label>
     <textarea type="text" class="form-control form-control-user " id="Address" placeholder="Enter Lawyer address"
-          name="Address" rows="5" cols="20" required value="<?php echo $data['address']?>"></textarea>
+          name="address" rows="5" cols="20" required value="<?php echo $data['address']?>"></textarea>
     <br>
     <label for="image">Image</label>
     <input type="file" class="form-control" name="image" id="image" value="<?php echo 'image/'. $data['image']?>" >
     <br>
-    <input type="submit" class="w-100 btn btn-success" name="update ">
+    <input type="submit" class="w-100 btn btn-success" name="update">
     
     </form>
     
     </div>
 
     <?php
-  }
-}
+ }
+} 
 
 include("includes/footer.php");
 ?>

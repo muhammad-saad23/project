@@ -5,17 +5,17 @@ include("includes/sidebar.php");
 include("../config.php");
 
 //pagination 
-$limit=3;
-if (isset($_GET['pgno'])) {
-    $pgno=$_GET['pgno'];
-}else{
-    $pgno=1;
-}
+// $limit=3;
+// if (isset($_GET['pgno'])) {
+//     $pgno=$_GET['pgno'];
+// }else{
+//     $pgno=1;
+// }
 
-$start=($pgno-1)*$limit;
+// $start=($pgno-1)*$limit;
 
 // view lawyer
-$select="SELECT *FROM `lawyer` as l inner join `cases` as c on l.case = c.id limit {$start},{$limit}";
+$select="SELECT *FROM `lawyer` as l inner join `cases` as c on l.case = c.cid";
 $query=mysqli_query($connection,$select);
 
 if (mysqli_num_rows($query)>0) {
@@ -32,7 +32,7 @@ if (mysqli_num_rows($query)>0) {
     <div class="col-xl-10 col-lg-12 col-md-9">
        
         
-    <table class="table table-warning">
+    <table id="example" class="table table-striped" style="width:100%">
         <thead class="bg-warning p-2 text-dark bg-opacity-10" style="opacity: 75%;">
             <tr>
             <th scope="col">ID</th>
@@ -42,7 +42,7 @@ if (mysqli_num_rows($query)>0) {
             <th scope="col">Phone</th>
             <th scope="col">Address</th>
             <th scope="col">Image</th>
-            <th scope="col">status</th>
+            <th scope="col">Profile</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
             </tr>
@@ -62,8 +62,8 @@ if (mysqli_num_rows($query)>0) {
             <td><?php  echo $data['phone']?></td>
             <td><?php echo $data['address']?></td>
             <td><img src="<?php echo 'image/'. $data['image']?>" width="100px" height="100px" alt=""></td>
-            <td><?php echo $data['status']?></td>
             
+            <td ><a href="profilelawyer.php?id=<?php echo $data['id']?>" class="btn btn-primary">Profile</a></td>
             <td ><a href="update.php?id=<?php echo $data['id']?>" class="btn btn-success">Update</a></td>
             <td ><a href="deletelawyer.php?id=<?php echo $data['id']?>"  class="btn btn-danger">Delete</a></td>
             
@@ -77,31 +77,31 @@ if (mysqli_num_rows($query)>0) {
     </table>
 
     <?php
-    $pagination="SELECT *FROM `lawyer`";
-    $run=mysqli_query($connection,$pagination);
+//     $pagination="SELECT *FROM `lawyer`";
+//     $run=mysqli_query($connection,$pagination);
 
-    if (mysqli_num_rows($run)>0) {
-        $total_record=mysqli_num_rows($run);
-        $total_page=ceil($total_record / $limit);
+//     if (mysqli_num_rows($run)>0) {
+//         $total_record=mysqli_num_rows($run);
+//         $total_page=ceil($total_record / $limit);
 
-        echo '<ul class="pagination">';
-        if ($pgno > 1) {
+//         echo '<ul class="pagination">';
+//         if ($pgno > 1) {
             
-            echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno - 1).'">Previous</a></li>';
-        }
+//             echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno - 1).'">Previous</a></li>';
+//         }
     
     
-    for ($i=1; $i < $total_page ; $i++) { 
-        echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.$i.'">'.$i.'</a></li>';
+//     for ($i=1; $i < $total_page ; $i++) { 
+//         echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.$i.'">'.$i.'</a></li>';
         
-    }
+//     }
     
-    if ($pgno < $total_page) {
-        echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno + 1).'">Next</a></li>';
-    }
-    echo '</ul>"';
+//     if ($pgno < $total_page) {
+//         echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno + 1).'">Next</a></li>';
+//     }
+//     echo '</ul>';
 
-}
+// }
     ?>
    
 
@@ -110,8 +110,10 @@ if (mysqli_num_rows($query)>0) {
 </div>
 
 </div>
-
-
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script>new DataTable('#example');</script>
 <?php
 include("includes/footer.php");
 ?>

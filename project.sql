@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Nov 20, 2023 at 07:59 PM
+-- Generation Time: Nov 24, 2023 at 08:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cases` (
-  `id` int(255) NOT NULL,
+  `cid` int(255) NOT NULL,
   `case_name` varchar(255) NOT NULL,
   `status` tinyint(255) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -37,10 +37,12 @@ CREATE TABLE `cases` (
 -- Dumping data for table `cases`
 --
 
-INSERT INTO `cases` (`id`, `case_name`, `status`) VALUES
-(9, 'Criminal', 1),
-(10, 'Family', 1),
-(11, 'Busniess', 1);
+INSERT INTO `cases` (`cid`, `case_name`, `status`) VALUES
+(24, 'Criminal', 1),
+(25, 'Family', 1),
+(26, 'Busniess', 1),
+(27, 'Divorce', 1),
+(28, 'Civil', 1);
 
 -- --------------------------------------------------------
 
@@ -51,7 +53,7 @@ INSERT INTO `cases` (`id`, `case_name`, `status`) VALUES
 CREATE TABLE `lawyer` (
   `id` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `case` int(20) NOT NULL,
+  `case` int(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `address` text NOT NULL,
@@ -64,10 +66,8 @@ CREATE TABLE `lawyer` (
 --
 
 INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `phone`, `address`, `image`, `status`) VALUES
-(2, 'marium khan', 10, 'marium@gmail.com', '3122458881', 'Nagin chowrangi', 'lawyer-3.jpg', 1),
-(3, 'muhammad saad', 9, 'ms2350138@gmail.com', '3152458881', 'Shadman town karachi', 'lawyer-1.jpg', 1),
-(4, 'Syed Ali khan', 11, 'ali@gmail.com', '3256669911', 'Nagin chowrangi', 'lawyer-2.jpg', 1),
-(5, 'junaid ahmed', 10, 'abc@gmail.com', '251668829', 'Gulshan E Iqbal', 'lawyer-4.jpg', 1);
+(6, 'muhammad saad', 24, 'ms2258881@gmail.com', '03152458881', 'Pakistan, Karachi', 'lawyer-1.jpg', 1),
+(7, 'marium Khan', 27, 'marium@gmail.com', '03256669911', 'Pakistan, Lahore', 'lawyer-3.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ INSERT INTO `register` (`id`, `name`, `age`, `email`, `password`) VALUES
 -- Indexes for table `cases`
 --
 ALTER TABLE `cases`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`cid`);
 
 --
 -- Indexes for table `lawyer`
@@ -125,13 +125,13 @@ ALTER TABLE `register`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `register`
@@ -147,7 +147,7 @@ ALTER TABLE `register`
 -- Constraints for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  ADD CONSTRAINT `case_id` FOREIGN KEY (`case`) REFERENCES `cases` (`id`);
+  ADD CONSTRAINT `case_id` FOREIGN KEY (`case`) REFERENCES `cases` (`cid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

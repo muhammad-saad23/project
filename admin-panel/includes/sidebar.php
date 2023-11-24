@@ -51,7 +51,7 @@
                                 <nav class="sb-sidenav-menu-nested nav" >
                                     <a class="nav-link" href="addlawyer.php">Add Lawyer</a>
                                     <a class="nav-link" href="viewlawyer.php">View Lawyer</a>
-                                    <a class="nav-link" href="profilelawyer.php">View Profile</a>
+                                    <!-- <a class="nav-link" href="profilelawyer.php">View Profile</a> -->
                                 </nav>
                             </div>
                             <a class="nav-link" href="tables.html">

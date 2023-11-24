@@ -5,7 +5,9 @@ include ("includes/sidebar.php");
 include("../config.php");
 
 // profile
-$profile="SELECT * FROM `lawyer` as l inner join `cases` as c on l.case=c.id";
+$law_id=$_GET['id'];
+
+$profile="SELECT * FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$law_id'";
 $run_query=mysqli_query($connection,$profile);
 
 if (mysqli_num_rows($run_query)>0) {

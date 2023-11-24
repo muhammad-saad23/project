@@ -7,7 +7,7 @@ include("../config.php");
 
 $lawyer_id=$_GET['id'];
 
-$delete="DELETE FROM `lawyer` where `case`='$lawyer_id'";
+$delete="DELETE FROM `lawyer` where id='$lawyer_id'";
 $run_query=mysqli_query($connection,$delete);
 
 if ($run_query) {

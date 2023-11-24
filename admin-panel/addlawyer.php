@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 
   move_uploaded_file($tmp_image,'image/'.$image_name);
 
-  $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`phone`,`address`,`image`) values('$name','$case','$email',$phone,'$address','$image_name')";
+  $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`phone`,`address`,`image`) values('$name','$case','$email','$phone','$address','$image_name')";
   $query=mysqli_query($connection,$insert);
 }
 
@@ -61,13 +61,13 @@ if (isset($_POST['btncase'])) {
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 
-     echo '<option value="'.$row['id'].'">'.$row['case_name'].'</option>';
+     echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
       
     }
   }
   ?>
 
-            </select>
+            </select> 
           </div>
         </div>
         <div class="form-group row mb-4">
