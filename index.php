@@ -48,10 +48,10 @@
             <div class="collapse navbar-collapse " id="navbarCollapse">
                 <a href="index.html"> <img src="img/logo.png" style="height: 100px;" alt=""></a>
                 <div class="navbar-nav mx-auto  py-0">
-                    <a href="index.html" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
-                    <a href="about.html" class="nav-item nav-link" style="font-size: 20px;">About</a>
-                    <a href="service.html" class="nav-item nav-link" style="font-size: 20px;">Practice</a>
-                    <a href="team.html" class="nav-item nav-link" style="font-size: 20px;">Attorneys</a>
+                    <a href="index.php" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
+                    <a href="about.php" class="nav-item nav-link" style="font-size: 20px;">About</a>
+                    <a href="service.php" class="nav-item nav-link" style="font-size: 20px;">Practice</a>
+                    <a href="team.php" class="nav-item nav-link" style="font-size: 20px;">Attorneys</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                             style="font-size: 20px;">Dropdown</a>
@@ -61,7 +61,7 @@
                             <a href="#" class="dropdown-item">Menu Item 3</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
+                    <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
                 </div>
                 <a href="register.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Signup </a>
                 <a href="login.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Login </a>

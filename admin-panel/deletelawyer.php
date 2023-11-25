@@ -11,7 +11,7 @@ $delete="DELETE FROM `lawyer` where id='$lawyer_id'";
 $run_query=mysqli_query($connection,$delete);
 
 if ($run_query) {
-    echo '<script> window.location.href(viewlawyer.php) </script>';
+    echo '<script>window.location.href="viewlawyer.php" </script>';
 }else{
     echo 'query failed';
 }

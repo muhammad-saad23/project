@@ -44,7 +44,7 @@ if (mysqli_num_rows($result)>0) {
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 
-     echo '<option value="'.$row['id'].'">'.$row['case_name'].'</option>';
+     echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
       
     }}
   ?>
