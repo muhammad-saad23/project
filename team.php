@@ -1,72 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include("header.php");
+include("config.php");
 
-<head>
-    <meta charset="utf-8">
-    <title>JUSTICE - Free Lawyer Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+$fetch="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
+$run_query=mysqli_query($connection,$fetch);
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet"> 
+if (mysqli_num_rows($run_query)>0) { 
+    
+?>
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-     <!-- Header Start -->
-     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 bg-secondary d-none d-lg-block">
-                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                   
-                </a>
-            </div>
-                </div>
-                <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-                    <a href="index.php" class="navbar-brand d-block d-lg-none">
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse " id="navbarCollapse">
-                       <a href="index.php"> <img src="img/logo.png"  style="height: 100px;" alt=""></a>
-                        <div class="navbar-nav mx-auto  py-0">
-                            <a href="index.php" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
-                            <a href="about.php" class="nav-item nav-link" style="font-size: 20px;">About</a>
-                            <a href="service.pho" class="nav-item nav-link" style="font-size: 20px;">Practice</a>
-                            <a href="team.php" class="nav-item nav-link" style="font-size: 20px;">Attorneys</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Dropdown</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="#" class="dropdown-item">Menu Item 1</a>
-                                    <a href="#" class="dropdown-item">Menu Item 2</a>
-                                    <a href="#" class="dropdown-item">Menu Item 3</a>
-                                </div>
-                            </div>
-                            <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
-                        </div>
-                        <a href="register.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Signup </a>
-                        <a href="login.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Login </a>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
+    
 
 
     <!-- Page Header Start -->
@@ -84,83 +30,49 @@
     </div>
     <!-- Page Header End -->
 
-
+    
     <!-- Team Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center pb-2">
                 <h6 class="text-uppercase">Our Attorneys</h6>
                 <h1 class="mb-4">Meet Our Attorneys</h1>
-            </div>
+            
             <div class="row">
                 <div class="col-12">
+
                     <div class="bg-primary rounded" style="height: 200px;"></div>
-                    <div class="owl-carousel team-carousel position-relative" style="margin-top: -97px; padding: 0 30px;">
+                    <div class="owl-carousel team-carousel position-relative " style="margin-top: -97px; padding: 0 30px;">
+                    <?php                      
+                                while($row=mysqli_fetch_assoc($run_query)){
+                            ?>
                         <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
-                            <h5 class="mb-2 px-4">Attorney Name</h5>
-                            <p class="mb-3 px-4">Practice Area</p>
+                         
+                            <h5 class="mb-2 px-4"><?php echo $row['name']?></h5>
+                            <p class="mb-3 px-4"><?php echo $row['case_name']?></p>
                             <div class="team-img position-relative">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo 'admin-panel/image/'. $row['image']?>" alt="">
                                 <div class="team-social">
                                     <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                                     <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
+
+                       
                         </div>
-                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
-                            <h5 class="mb-2 px-4">Attorney Name</h5>
-                            <p class="mb-3 px-4">Practice Area</p>
-                            <div class="team-img position-relative">
-                                <img class="img-fluid" src="img/team-2.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
-                            <h5 class="mb-2 px-4">Attorney Name</h5>
-                            <p class="mb-3 px-4">Practice Area</p>
-                            <div class="team-img position-relative">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
-                            <h5 class="mb-2 px-4">Attorney Name</h5>
-                            <p class="mb-3 px-4">Practice Area</p>
-                            <div class="team-img position-relative">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
-                            <h5 class="mb-2 px-4">Attorney Name</h5>
-                            <p class="mb-3 px-4">Practice Area</p>
-                            <div class="team-img position-relative">
-                                <img class="img-fluid" src="img/team-5.jpg" alt="">
-                                <div class="team-social">
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
+                        <?php
+}
+}    
+    ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+   
+
     <!-- Team End -->
 
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 25, 2023 at 06:54 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost:3307:3307
+-- Generation Time: Nov 27, 2023 at 08:05 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,8 +67,11 @@ CREATE TABLE `lawyer` (
 
 INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `phone`, `address`, `image`, `status`) VALUES
 (1, 'muhammad saad', 24, 'ms22458881@gmail.com', '03152458881', 'Pakistan,Karachi', 'law-1.jpg', 1),
-(2, 'Syed sami khan', 28, 'sami23@gmail.com', '0325571881', 'Pakistan,Islamabad', 'lawyer-2.jpg', 1),
-(3, 'Ravi Kumar', 25, 'ravi@gmail.com', '031526898901', 'India,Mumbai', 'lawyer-5.jpg', 1);
+(2, 'Syed sami ', 25, 'sami23@gmail.com', '0325571881', 'Pakistan,Islamabad', 'lawyer-4.jpg', 1),
+(3, 'Ravi Kumar', 25, 'ravi@gmail.com', '031526898901', 'India,Mumbai', 'lawyer-5.jpg', 1),
+(4, 'Brad Johnson', 26, 'brad@gmail.com', '0300267819', 'USA, New York', 'lawyer-12.jpg', 1),
+(5, 'Marium Khan', 27, 'marium@gmail.com', '0327771991', 'Pakistan, Lahore', 'lawyer-3.jpg', 1),
+(6, 'Deepaik Khan', 25, 'deepaik@gmail.com', '0341899011', 'India, Pune', 'lawyer-6.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -132,7 +135,7 @@ ALTER TABLE `cases`
 -- AUTO_INCREMENT for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `register`
