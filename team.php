@@ -53,9 +53,8 @@ if (mysqli_num_rows($run_query)>0) {
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="<?php echo 'admin-panel/image/'. $row['image']?>" alt="">
                                 <div class="team-social">
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-outline-light  mx-1" href="lawyertemp.php?id=<?php echo $row['id']?>" >READ MORE</a>
+                                  
                                 </div>
                             </div>
 

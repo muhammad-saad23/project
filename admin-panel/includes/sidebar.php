@@ -1,6 +1,6 @@
  <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color:#B49C73;" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color:#355a6e;" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
@@ -27,13 +27,10 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="login.php" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Login
-                                      
-                                    </a>
                                    
-                                    <a class="nav-link collapsed" href="Register.php"  data-bs-target="#pagesCollapseError"  >
-                                        Register
+                                   
+                                    <a class="nav-link collapsed" href="login.php"  data-bs-target="#pagesCollapseError"  >
+                                        Login
                                         
                                     </a>
                                    
@@ -60,7 +57,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer" style="background-color:#B49C73;">
+                    <div class="sb-sidenav-footer" style="background-color:#355a6e;">
                         <div class="small">Logged in as:</div>
                         Start Bootstrap
                     </div>

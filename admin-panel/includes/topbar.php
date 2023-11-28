@@ -1,4 +1,4 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark " style="background-color:#B49C73;">
+<nav class="sb-topnav navbar navbar-expand navbar-dark " style="background-color:#355a6e;">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.html">Admin Panel</a>
             <!-- Sidebar Toggle-->
