@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['useremail'])) {
+    header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,8 +71,8 @@
                     </div>
                     <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
                 </div>
-                <a href="register.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Signup </a>
-                <a href="login.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Login </a>
+                <!-- <a href="register.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Signup </a> -->
+                <a href="logout.php" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Logout</a>
             </div>
         </nav>
     </div>

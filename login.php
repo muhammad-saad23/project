@@ -1,6 +1,13 @@
 <?php
 include("config.php");
 
+session_start();
+
+if (isset($_SESSION['useremail'])) {
+    header("location:index.php");
+}
+
+
 // login work
 
 if (isset($_POST['submit'])) {
@@ -19,6 +26,8 @@ if (isset($_POST['submit'])) {
       $pass_decrypt = password_verify($log_pass, $db_pass);
 
       if ($pass_decrypt) {
+        $_SESSION['useremail'] =$data['email'];
+
         echo "<script> alert('login successfully')
                 window.location.href='index.php';
                </script>";

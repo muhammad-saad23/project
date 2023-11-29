@@ -24,7 +24,7 @@ if (mysqli_num_rows($query)>0) {
 
 ?>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
 
 <!-- Outer Row -->
 <div class="row justify-content-center">

@@ -1,36 +1,42 @@
 <?php
 include("../config.php");
 
-if (isset($_POST['submit'])) {
-    $login_email=$_POST['email'];
-    $login_password=$_POST['password'];
-
-    $login="SELECT * from `register` where email='$login_email'";
-    $run=mysqli_query($connection,$login);
-
-    if ($run) {
-        if (mysqli_num_rows($run)>0) {
-            $data=mysqli_fetch_assoc($run);
-
-            $db_pass=$data['password'];
-            $pass_dec=password_verify( $login_password,$db_pass);
-
-            if ($pass_dec) {
-                echo "<script> alert('login successfully')
-                window.location.href='index.php';
-               </script>";
-            }else{
-                echo "<script> alert(login unsuccessfully)</script>";
-            }
-        }else{
-            echo "<script>alert(invailed password)</script>";
-        }
-
-    }else {
-        echo "(query failed)";
-    }
+session_start();
+if (isset($_SESSION["useremail"])) {
+    header("location:index.php");
 }
 
+
+if (isset($_POST['submit'])) {
+    $log_email=$_POST['login_email'];
+    $log_password=$_POST['login_password'];
+
+    $login="SELECT*from `register` where email='$log_email'";
+    $conn_db=mysqli_query($connection,$login);
+
+    if ($conn_db) {
+        if (mysqli_num_rows($conn_db)>0) {
+            $data=mysqli_fetch_assoc($conn_db);
+
+            $db_password=$data['password'];
+            $pass_verify=password_verify($log_password,$db_password);
+
+            if ($pass_verify) {
+                
+                $_SESSION['useremail'] =$data['email'];
+                echo "<script> alert('login successfully')
+                        window.location.href='index.php';
+                       </script>";
+              }else{
+                echo "<script> alert(login unsuccessfully)</script>";
+              }
+            }else{
+              echo "<script>alert(invailed password)</script>";
+            }
+          }else{
+            echo "(query failed)";
+          }
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +51,7 @@ if (isset($_POST['submit'])) {
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body  style="background-color:#8a6240;">
+    <body  style="background-color:#355a6e;">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -55,13 +61,13 @@ if (isset($_POST['submit'])) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail" type="email" name="login_email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password"name="password" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" type="password" name="login_password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
@@ -70,7 +76,7 @@ if (isset($_POST['submit'])) {
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary"  name="submit" type="submit">Login</a>
+                                              <input type="submit" name="submit" class="btn btn-primary">
                                             </div>
                                         </form>
                                     </div>
