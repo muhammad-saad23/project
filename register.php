@@ -72,8 +72,14 @@ height: 100%;
 <body style="background-color: rgb(212, 218, 222);">
   <!-- Section: Design Block -->
   <div class="container mt-5">
-<section class=" text-center text-lg-start">
+<section class="  text-lg-start">
     <style>
+      body{
+        background-image:url("img/login.jpg");
+        background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+            }
       .rounded-t-5 {
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
@@ -89,56 +95,55 @@ height: 100%;
         }
       }
     </style>
-    <div class="card mb-3">
-      <div class="row g-0 d-flex align-items-center">
-        <div class="col-lg-4 d-none d-lg-flex">
-          <img src="img/login.jpg" alt="Trendy Pants and Shoes"
-            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-        </div>
-        <div class="col-lg-8">
-          <div class="card-body py-5 px-md-5">
+    <div class="card mb-3 container">
+     
+        <h1 style="text-align: center;text-transform: uppercase;font-family: sans-serif;" class="mb-4 mt-2">Client Register</h1>
+        
             
-            <h1 style="text-align: center;text-transform: uppercase;font-family: sans-serif;">Register</h1>
             <!-- form -->
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-              <!-- name input -->
-              <div class="form-outline mb-4">
+              <!-- name and age input -->
+              <div class="form-outline mb-4 row  ">
+                <div class="col-sm-6 mb-3 mb-sm-0">
                   <label class="form-label" for="form2Example1">Name</label>
                 <input type="text" id="form2Example1" name="name" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                <label class="form-label" for="form2Example1">Age</label>
+              <input type="number" id="form2Example1" name="age" class="form-control" />
               </div>
-              <!-- Age input -->
-              <div class="form-outline mb-4">
-                  <label class="form-label" for="form2Example1">Age</label>
-                <input type="number" id="form2Example1" name="age" class="form-control" />
+              </div>
+
+              <!-- email and password input -->
+              <div class="form-outline mb-4 row  ">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label class="form-label" for="form2Example1">Email</label>
+                <input type="email" id="form2Example1" name="email" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                <label class="form-label" for="form2Example1">Password</label>
+              <input type="password" id="form2Example1" name="password" class="form-control" />
+              </div>
               </div>
              
-              <!-- Email input -->
+            <!-- phone -->
               <div class="form-outline mb-4">
-                  <label class="form-label" for="form2Example1">Email address</label>
-                <input type="email" id="form2Example1" name="email" class="form-control" />
+                  <label class="form-label" for="form2Example2">Phone</label>
+                <input type="number" id="form2Example2" name="phone" class="form-control" />
               </div>
-  
-              <!-- Password input -->
+              <!-- address -->
               <div class="form-outline mb-4">
-                  <label class="form-label" for="form2Example2">Password</label>
-                <input type="password" id="form2Example2" name="password" class="form-control" />
+                  <label class="form-label" for="form2Example2">Address</label>
+                <textarea type="text" id="form2Example2" name="address" class="form-control"></textarea>
+              </div>
+              <!-- image -->
+              <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example2">Image</label>
+                  <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>
               </div>
   
               <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-4">
-                <div class="col d-flex justify-content-center">
-                  <!-- Checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                  </div>
-                </div>
-  
-                <div class="col">
-                  <!-- Simple link -->
-                  <a href="#!">Forgot password?</a>
-                </div>
-              </div>
+             
   
               <!-- Submit button -->
               <input type="submit" class="w-100 btn btn-primary mb-3" value="Register" name="submit">
@@ -146,9 +151,7 @@ height: 100%;
               <a href="login.php"><h5 style="text-align: center;">Already have account</h5></a>
             </form>
   
-          </div>
-        </div>
-      </div>
+          
     </div>
   </section>
 </div>

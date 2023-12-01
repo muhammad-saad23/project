@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Nov 27, 2023 at 08:05 PM
+-- Generation Time: Dec 01, 2023 at 08:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appoinment`
+--
+
+CREATE TABLE `appoinment` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `case` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appoinment`
+--
+
+INSERT INTO `appoinment` (`id`, `name`, `email`, `date`, `time`, `case`) VALUES
+(1, 'muhammad saad', 'ms2350138@gmail.com', '2023-12-12', '17:30', 24);
 
 -- --------------------------------------------------------
 
@@ -51,27 +73,24 @@ INSERT INTO `cases` (`cid`, `case_name`, `status`) VALUES
 --
 
 CREATE TABLE `lawyer` (
-  `id` int(11) NOT NULL,
+  `id` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `case` int(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `address` text NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
+  `experience` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lawyer`
 --
 
-INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `phone`, `address`, `image`, `status`) VALUES
-(1, 'muhammad saad', 24, 'ms22458881@gmail.com', '03152458881', 'Pakistan,Karachi', 'law-1.jpg', 1),
-(2, 'Syed sami ', 25, 'sami23@gmail.com', '0325571881', 'Pakistan,Islamabad', 'lawyer-4.jpg', 1),
-(3, 'Ravi Kumar', 25, 'ravi@gmail.com', '031526898901', 'India,Mumbai', 'lawyer-5.jpg', 1),
-(4, 'Brad Johnson', 26, 'brad@gmail.com', '0300267819', 'USA, New York', 'lawyer-12.jpg', 1),
-(5, 'Marium Khan', 27, 'marium@gmail.com', '0327771991', 'Pakistan, Lahore', 'lawyer-3.jpg', 1),
-(6, 'Deepaik Khan', 25, 'deepaik@gmail.com', '0341899011', 'India, Pune', 'lawyer-6.jpg', 1);
+INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `password`, `phone`, `experience`, `address`, `image`) VALUES
+(1, 'muhammad saad', 24, 'ms2350138@gmail.com', '', '03152458881', '8', 'Pakistan, Karachi', 'lawyer-1.jpg'),
+(3, 'Ayesha Khan', 25, 'marium@gmail.com', '', '03256669911', '6', 'Pakistan, Lahore', 'lawyer-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -96,11 +115,19 @@ INSERT INTO `register` (`id`, `name`, `age`, `email`, `password`) VALUES
 (4, 'junaid', 0, 'junaid@gmail.com', '$2y$10$ENBpqMQ2Dje18NYvZSBDyOdTSx9Fx.kOTtjd2a3rEo9ZYMoiv.X4S'),
 (6, 'imran', 0, 'imran@gmail.com', '$2y$10$ET1lYssLsh5Q80NKYsjZyO1RHk.IE4sVDmH2Lx/RcEMzg5D17NIeC'),
 (8, 'muhammad saad', 18, 'ms2350138@gmail.com', '$2y$10$0cDcTpi.PIcuPGlrdmazdOuFFDpMxBDKst2NPBt/LPQxxufy/BFZC'),
-(10, 'khan', 20, 'khan@gmail.com', '$2y$10$2igUhSZFRIliQsIWnP/n4uoiuI4pwzun29LqMjpFXaKT/GLDlPKhK');
+(10, 'khan', 20, 'khan@gmail.com', '$2y$10$2igUhSZFRIliQsIWnP/n4uoiuI4pwzun29LqMjpFXaKT/GLDlPKhK'),
+(11, 'sami', 19, 'sami@gmail.com', '$2y$10$6bIDWYZoAfSSGDk0BQYjOeCbwNDZqNePlD/.dFey.zHduxzMoNFn2');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `app_id` (`case`);
 
 --
 -- Indexes for table `cases`
@@ -126,6 +153,12 @@ ALTER TABLE `register`
 --
 
 --
+-- AUTO_INCREMENT for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
@@ -135,17 +168,23 @@ ALTER TABLE `cases`
 -- AUTO_INCREMENT for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  ADD CONSTRAINT `app_id` FOREIGN KEY (`case`) REFERENCES `cases` (`cid`);
 
 --
 -- Constraints for table `lawyer`

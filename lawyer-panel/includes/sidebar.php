@@ -42,29 +42,35 @@
           
          
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="viewclient.php" class="nav-link">
+              <i class="nav-icon fas fa-user-alt"></i>
               <p>
-                Category
+                 Client information 
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="viewappo.php" class="nav-link">
+            <i class="nav-icon fas fa-clock"></i>
+              <p>
+                 Appoinment Details 
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+            
+          </li>
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+                 Client information 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Category</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
+            
+          </li> -->
           <li class="nav-header">Settings</li>
          
           

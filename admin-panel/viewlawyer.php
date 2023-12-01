@@ -39,7 +39,6 @@ if (mysqli_num_rows($query)>0) {
             <th scope="col">Name</th>
             <th scope="col">Case</th>
             <th scope="col">Email</th>
-            <th scope="col">Phone</th>
             <th scope="col">Address</th>
             <th scope="col">Image</th>
             <th scope="col">Profile</th>
@@ -59,7 +58,6 @@ if (mysqli_num_rows($query)>0) {
             <td><?php echo $data['name']?></td>
             <td><?php echo $data['case_name']?></td>
             <td><?php echo $data['email']?></td>
-            <td><?php  echo $data['phone']?></td>
             <td><?php echo $data['address']?></td>
             <td><img src="<?php echo 'image/'. $data['image']?>" width="100px" height="100px" alt=""></td>
             
