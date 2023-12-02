@@ -12,19 +12,28 @@ if (isset($_POST['submit'])) {
   $age=mysqli_real_escape_string($connection,$_POST['age']);
   $email=mysqli_real_escape_string($connection,$_POST['email']);
   $password=mysqli_real_escape_string($connection,$_POST['password']);
+  $phone=mysqli_real_escape_string($connection,$_POST['phone']);
+  $address=mysqli_real_escape_string($connection,$_POST['address']);
+  $image=$_FILES['image']['name'];
+  $tmp_image=$_FILES['image']['tmp_name'];
+  $image_size=$_FILES['image']['size'];
+
+  move_uploaded_file($tmp_image,'client_img/'.$image);
 
   $Enc_pass=password_hash($password,PASSWORD_BCRYPT);
 
-  $query="SELECT *FROM `register` where email='$email'";
+  $query="SELECT *FROM `client_register` where email='$email'";
   $run_query=mysqli_query($connection,$query);
   if (mysqli_num_rows($run_query)>0) {              
-                echo "<script> alert ('login successful')
-                window.location.href='login.php';
+                echo "<script> alert ('register successful')
+                window.location.href='index.php';
                 </script>";
   }else{
-    $insert = "INSERT INTO `register`(`name`,`email`,`age`,`password`)VALUES ('$name','$email','$age', '$Enc_pass')";
+    $insert = "INSERT INTO `client_register`(`name`,`age`,`email`,`password`,`phone`,`address`,`image`)VALUES ('$name','$age','$email','$Enc_pass','$phone','$address','$image')";
     $conn_db = mysqli_query($connection, $insert);
   }
+
+  
 }
 ?>
 
@@ -101,7 +110,7 @@ height: 100%;
         
             
             <!-- form -->
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
               <!-- name and age input -->
               <div class="form-outline mb-4 row  ">
                 <div class="col-sm-6 mb-3 mb-sm-0">
