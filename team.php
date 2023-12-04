@@ -164,7 +164,7 @@ if (mysqli_num_rows($run_select)) {
         echo '<ul class="pagination">';
         if ($pgno > 1) {
             
-            echo '<li class="page-item"><a class="page-link" href="team.php?pgno='.($pgno - 1).'">Previous</a></li>';
+            echo '<li class="page-item"><a class="page-link " href="team.php?pgno='.($pgno - 1).'">Previous</a></li>';
         }
     
     

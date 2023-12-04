@@ -2,9 +2,9 @@
 include("../config.php");
 
 session_start();
-if (isset($_SESSION["useremail"])) {
-    header("location:index.php");
-}
+// if (isset($_SESSION["useremail"])) {
+//     header("location:index.php");
+// }
 
 
 if (isset($_POST['submit'])) {

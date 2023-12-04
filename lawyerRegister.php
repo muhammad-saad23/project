@@ -1,30 +1,37 @@
 <?php
-include("../header.php");
-include("../config.php");
+include("header.php");
+include("config.php");
 
 if (isset($_POST['submit'])) {
-    $name=$_POST['name'];
-    $case=$_POST['case'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $phone=$_POST['phone'];
-    $exper=$_POST['experience'];
-    $address=$_POST['Address'];
+  $name=mysqli_real_escape_string($connection,$_POST['name']);
+  $case=mysqli_real_escape_string($connection,$_POST['case']);
+  $email=mysqli_real_escape_string($connection,$_POST['email']);
+  $password=mysqli_real_escape_string($connection,$_POST['password']);
+  $phone=mysqli_real_escape_string($connection,$_POST['phone']);
+  $exper=mysqli_real_escape_string($connection,$_POST['experience']);
+  $address=mysqli_real_escape_string($connection,$_POST['address']);
     $image_name=$_FILES['image']['name'];
     $tmp_image=$_FILES['image']['tmp_name'];
     $image_size=$_FILES['image']['size'];
   
-    move_uploaded_file($tmp_image,'../admin-panel/image/'.$image_name);
+    move_uploaded_file($tmp_image,'admin-panel/image/ '.$image_name);
   
-    $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$password','$phone','$exper','$address','$image_name')";
-    $query=mysqli_query($connection,$insert);
+   
 
-    if ($query) {
-      echo "<script> alert('Registration successfully')
-      window.location.href='profile.php';
-     </script>";
+    $Enc_pass=password_hash($password,PASSWORD_BCRYPT);
+
+    $query="SELECT *FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where email='$email'";
+    $run_query=mysqli_query($connection,$query);
+    if (mysqli_num_rows($run_query)>0) {              
+      echo "<script> alert('registration already success')</script>";
+    }else{
+      $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$Enc_pass','$phone','$exper','$address','$image_name')";
+      $conn_db = mysqli_query($connection, $insert);
+      echo "<script> alert('Registration successfully')</script>";
+      header("location:lawyer-panel/index.php");
     }
   }
+    
 ?>
 
 <div class="container">
@@ -87,13 +94,14 @@ if (isset($_POST['submit'])) {
     <div class="mb-3 form-group w-100">
         <label for="Address" class="form-label ">Address</label>
         <textarea type="text" class="form-control  form-control-user " id="Address" placeholder="Enter address"
-          name="Address" rows="5" cols="20" required></textarea>
+          name="address" rows="5" cols="20" required></textarea>
     </div>
     <div class="form-group w-100">
         <label for="formFileMultiple" class="form-label">Enter picture</label>
      <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>  
 
     </div>
+    
   <?php
   
   $law_profile="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
@@ -102,13 +110,14 @@ if (isset($_POST['submit'])) {
   if (mysqli_num_rows($conn)>0) {
    $row=mysqli_fetch_assoc($conn);
       ?>
-      <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-5" name="submit">
-    <?php
+      <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-1" name="submit">
+      <?php
     
   }
-    ?>
+  ?>
 </form>
-  </div>
+</div>
+<a href="lawyerlogin.php" style="color:#3366ff;text-decoration:underline;font-weight:700;" class="mx-auto mb-3">Already have you registrated</a>
 
 </div>
 
@@ -118,3 +127,6 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+<?php
+include("footer.php");
+?>

@@ -23,14 +23,16 @@ if (isset($_POST['submit'])) {
   $query="SELECT *FROM `client_register` where email='$email'";
   $run_query=mysqli_query($connection,$query);
   if (mysqli_num_rows($run_query)>0) {              
-                echo "<script>alert('register successfully')
-                window.location.href='index.php'
-                ";
+    echo "email already exists";
   }else{
     $insert = "INSERT INTO `client_register`(`name`,`age`,`email`,`password`,`phone`,`address`)VALUES ('$name','$age','$email','$Enc_pass','$phone','$address')";
     $conn_db = mysqli_query($connection, $insert);
+    echo "<script>alert('register successfully')            
+    </script>";
+    header("location:index.php");
   }
 
+  
   
 }
 ?>

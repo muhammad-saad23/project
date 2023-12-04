@@ -54,7 +54,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarCollapse">
-                <a href="index.html"> <img src="img/logo.png" style="height: 100px;" alt=""></a>
+                <a href="index.php"> <img src="img/logo.png" style="height: 100px;" alt=""></a>
                 <div class="navbar-nav mx-auto  py-0">
                     <a href="index.php" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
                     <a href="about.php" class="nav-item nav-link" style="font-size: 20px;">About</a>
@@ -71,7 +71,7 @@
                     </div>
                     <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
                 </div>
-                <a href="lawyer-panel/lawyerRegister.php"  class="btn btn-primary  d-lg-block" style="font-size: 18px;margin-right:5px;">Lawyer Register</a>
+                <a href="lawyerRegister.php"  class="btn btn-primary  d-lg-block" style="font-size: 18px;margin-right:5px;">Lawyer Register</a>
                 <a href="" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
             </div>
         </nav>
