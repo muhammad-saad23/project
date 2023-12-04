@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $log_email=$_POST['login_email'];
     $log_password=$_POST['login_password'];
 
-    $login="SELECT*from `register` where email='$log_email'";
+    $login="SELECT*from `client_register` where email='$log_email'";
     $conn_db=mysqli_query($connection,$login);
 
     if ($conn_db) {

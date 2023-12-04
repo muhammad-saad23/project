@@ -4,6 +4,14 @@ include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
+$client="SELECT * FROM `client_register`";
+$conn_client=mysqli_query($connection,$client);
+
+if (mysqli_num_rows($conn_client)>0) {
+    
+
+
+
 
 ?>
 
@@ -20,11 +28,10 @@ include("../config.php");
             <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Case</th>
+            <th scope="col">Age</th>
             <th scope="col">Email</th>
+            <th scope="col">Phone</th>
             <th scope="col">Address</th>
-            <th scope="col">Image</th>
-            <th scope="col">Profile</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
             </tr>
@@ -32,29 +39,35 @@ include("../config.php");
         </thead>
         <tbody>
             <?php
-            // while ($data=mysqli_fetch_assoc($query)) {
+            while ($data=mysqli_fetch_assoc($conn_client)) {
                 
             
             ?>
-            <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><img src="" alt=""></td>
             
-            <td ><a href="" class="btn btn-primary">Profile</a></td>
-            <td ><a href="" class="btn btn-success">Update</a></td>
-            <td ><a href=""  class="btn btn-danger">Delete</a></td>
+            <th scope="row"><?php echo $data['id']?></th>
+            <td><?php echo $data['name']?></td>
+            <td><?php echo $data['age']?></td>
+            <td><?php echo $data['email']?></td>
+            <td><?php echo $data['phone']?></td>
+            <td><?php echo $data['address']?></td>
+            
+            
+            
+            <td ><a href="updateclient.php?id=<?php echo $data['id']?>" class="btn btn-success">Update</a></td>
+            <td ><a href="clientdelete.php?id=<?php echo $data['id']?>"  class="btn btn-danger">Delete</a></td>
             
         </tr>
-      
+        <?php
+        }
+    }
+        ?>
       
         </tbody>
+        
     </table>
 
     <?php
+            
 //     $pagination="SELECT *FROM `lawyer`";
 //     $run=mysqli_query($connection,$pagination);
 

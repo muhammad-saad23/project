@@ -71,8 +71,8 @@
                     </div>
                     <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
                 </div>
-                <a href="lawyerRegister.php"  class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Lawyer Register</a>
-                <a href="" class="btn btn-primary mr-3 d-none d-lg-block" style="font-size: 18px;">Login</a>
+                <a href="lawyer-panel/lawyerRegister.php"  class="btn btn-primary  d-lg-block" style="font-size: 18px;margin-right:5px;">Lawyer Register</a>
+                <a href="" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
             </div>
         </nav>
     </div>

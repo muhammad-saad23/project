@@ -1,6 +1,6 @@
 <?php
-include("header.php");
-include("config.php");
+include("../header.php");
+include("../config.php");
 
 if (isset($_POST['submit'])) {
     $name=$_POST['name'];
@@ -14,13 +14,15 @@ if (isset($_POST['submit'])) {
     $tmp_image=$_FILES['image']['tmp_name'];
     $image_size=$_FILES['image']['size'];
   
-    move_uploaded_file($tmp_image,'admin-panel/image/'.$image_name);
+    move_uploaded_file($tmp_image,'../admin-panel/image/'.$image_name);
   
     $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$password','$phone','$exper','$address','$image_name')";
     $query=mysqli_query($connection,$insert);
 
     if ($query) {
-        header("location:lawyer-panel/index.php");
+      echo "<script> alert('Registration successfully')
+      window.location.href='profile.php';
+     </script>";
     }
   }
 ?>
@@ -92,8 +94,19 @@ if (isset($_POST['submit'])) {
      <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>  
 
     </div>
-
-    <input type="submit" class="btn btn-success btn-user w-100 btn-block mb-5" name="submit">
+  <?php
+  
+  $law_profile="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
+  $conn=mysqli_query($connection,$law_profile);
+  
+  if (mysqli_num_rows($conn)>0) {
+   $row=mysqli_fetch_assoc($conn);
+      ?>
+      <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-5" name="submit">
+    <?php
+    
+  }
+    ?>
 </form>
   </div>
 

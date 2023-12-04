@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Dec 01, 2023 at 08:48 PM
+-- Generation Time: Dec 04, 2023 at 11:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,6 +69,31 @@ INSERT INTO `cases` (`cid`, `case_name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `client_register`
+--
+
+CREATE TABLE `client_register` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `age` int(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `client_register`
+--
+
+INSERT INTO `client_register` (`id`, `name`, `age`, `email`, `password`, `phone`, `address`, `image`) VALUES
+(1, 'muhammad saad khan', 18, 'ms222458881@gmail.com', '$2y$10$K5Wq2ZajPuhWvNAJ14nYbeper.AMOc/y.NKw305AsjqW8c1Xn6lFy', '03152458811', 'Karachi', 'bilal.png'),
+(3, 'saad', 19, 'ms2258181@gmail.com', '$2y$10$BdDDEP53PFvB/hrvq3QcEONlJ5g/OSQ2RC8bBm6fkLcjmuP6b2nPG', '03256111911', 'Karachi', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lawyer`
 --
 
@@ -90,33 +115,15 @@ CREATE TABLE `lawyer` (
 
 INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `password`, `phone`, `experience`, `address`, `image`) VALUES
 (1, 'muhammad saad', 24, 'ms2350138@gmail.com', '', '03152458881', '8', 'Pakistan, Karachi', 'lawyer-1.jpg'),
-(3, 'Ayesha Khan', 25, 'marium@gmail.com', '', '03256669911', '6', 'Pakistan, Lahore', 'lawyer-3.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `register`
---
-
-CREATE TABLE `register` (
-  `id` int(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `age` int(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `register`
---
-
-INSERT INTO `register` (`id`, `name`, `age`, `email`, `password`) VALUES
-(3, 'marium', 16, 'marium@gmail.com', 'marium'),
-(4, 'junaid', 0, 'junaid@gmail.com', '$2y$10$ENBpqMQ2Dje18NYvZSBDyOdTSx9Fx.kOTtjd2a3rEo9ZYMoiv.X4S'),
-(6, 'imran', 0, 'imran@gmail.com', '$2y$10$ET1lYssLsh5Q80NKYsjZyO1RHk.IE4sVDmH2Lx/RcEMzg5D17NIeC'),
-(8, 'muhammad saad', 18, 'ms2350138@gmail.com', '$2y$10$0cDcTpi.PIcuPGlrdmazdOuFFDpMxBDKst2NPBt/LPQxxufy/BFZC'),
-(10, 'khan', 20, 'khan@gmail.com', '$2y$10$2igUhSZFRIliQsIWnP/n4uoiuI4pwzun29LqMjpFXaKT/GLDlPKhK'),
-(11, 'sami', 19, 'sami@gmail.com', '$2y$10$6bIDWYZoAfSSGDk0BQYjOeCbwNDZqNePlD/.dFey.zHduxzMoNFn2');
+(3, 'Ayesha Khan', 25, 'marium@gmail.com', '', '03256669911', '6', 'Pakistan, Lahore', 'lawyer-3.jpg'),
+(5, 'Ayesha Khan', 28, 'Ayesha@gmail.com', 'ayesha', '03256669911', '5', 'India, Mumbai', 'lawyer-6.jpg'),
+(8, 'Wen chang', 28, 'ms2350138@gmail.com', 'wee', '03152458881', '2', 'china,beijing', 'lawyer-9.jpg'),
+(12, 'Syed sami ', 26, 'sami@gmail.com', 'sami', '03122458881', '6', 'Pakistan,Islamabad', 'lawyer-4.jpg'),
+(20, 'Brad Johnson', 28, 'brad@gmail.com', 'brad', '03152458881', '4', 'USA,New york', 'lawyer-12.jpg'),
+(21, 'Syed Ali khan', 25, 'ali@gmail.com', 'ali', '03256669911', '6', 'pakistan', 'lawyer-2.jpg'),
+(22, 'Ravi kumar', 28, 'ravi25@gmail.com', 'ravi', '0251668829', '9', 'India,Mumbai', 'lawyer-5.jpg'),
+(23, 'will smith', 25, 'will@gmail.com', '123', '03122458881', '11', 'USA,new york', 'lawyer-11.png'),
+(24, 'will smith', 25, 'will@gmail.com', '123', '03122458881', '11', 'USA,new york', 'lawyer-11.png');
 
 --
 -- Indexes for dumped tables
@@ -136,17 +143,17 @@ ALTER TABLE `cases`
   ADD PRIMARY KEY (`cid`);
 
 --
+-- Indexes for table `client_register`
+--
+ALTER TABLE `client_register`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lawyer`
 --
 ALTER TABLE `lawyer`
   ADD PRIMARY KEY (`id`),
   ADD KEY `case_id` (`case`);
-
---
--- Indexes for table `register`
---
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -165,16 +172,16 @@ ALTER TABLE `cases`
   MODIFY `cid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `lawyer`
+-- AUTO_INCREMENT for table `client_register`
 --
-ALTER TABLE `lawyer`
+ALTER TABLE `client_register`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `register`
+-- AUTO_INCREMENT for table `lawyer`
 --
-ALTER TABLE `register`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `lawyer`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
