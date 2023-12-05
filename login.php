@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   $log_email=$_POST['login_email'];
   $log_pass=$_POST['login_pass'];
 
-  $select="SELECT *from `register` where email='$log_email'";
+  $select="SELECT *from `client_register` where email='$log_email'";
   $run=mysqli_query($connection,$select);
 
   if ($run) {
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['useremail'] =$data['email'];
 
         echo "<script> alert('login successfully')
-                window.location.href='index.php';
+                window.location.href='lawyer-panel/index.php';
                </script>";
       }else{
         echo "<script> alert(login unsuccessfully)</script>";
@@ -150,7 +150,7 @@ height: 100%;
               <!-- Submit button -->
              <input type="submit" value="Login" class="btn btn-primary w-100 mb-3" name="submit">
   
-              <a href="register.php"><h5 style="text-align: center;">Don't have account</h5></a>
+              <a href="register.php"><h5 style="text-align: center;">Don't Registrated</h5></a>
             </form>
   
           </div>

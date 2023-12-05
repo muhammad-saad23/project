@@ -2,6 +2,9 @@
 include("header.php");
 include("config.php");
 
+// session_start();
+
+
 if (isset($_POST['submit'])) {
   $name=mysqli_real_escape_string($connection,$_POST['name']);
   $case=mysqli_real_escape_string($connection,$_POST['case']);
@@ -110,11 +113,11 @@ if (isset($_POST['submit'])) {
   if (mysqli_num_rows($conn)>0) {
    $row=mysqli_fetch_assoc($conn);
       ?>
-      <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-1" name="submit">
       <?php
     
   }
   ?>
+  <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-1" name="submit">
 </form>
 </div>
 <a href="lawyerlogin.php" style="color:#3366ff;text-decoration:underline;font-weight:700;" class="mx-auto mb-3">Already have you registrated</a>

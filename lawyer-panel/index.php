@@ -1,8 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION['useremail'])) {
+  header("location:../index.php");
+  // echo "script>window.location.href=../index.php";
+}
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
+
 
 // $law_id=$_GET['id'];
 $profile="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid ";

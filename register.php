@@ -120,7 +120,7 @@ height: 100%;
               <!-- Submit button -->
               <input type="submit" class="w-100 btn btn-success  text-dark mb-3" value="Register" name="submit">
 
-              <a href="login.php"><h5 style="text-align: center;">Already have account</h5></a>
+              <a href="login.php"><h5 style="text-align: center;">If You already registarted</h5></a>
             </form>
   
           

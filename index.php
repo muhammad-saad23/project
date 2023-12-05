@@ -2,6 +2,11 @@
 include("header.php");
 include("config.php");
 
+// session_start();
+
+
+
+
 $fetch="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
 $run_query=mysqli_query($connection,$fetch);
 
@@ -19,7 +24,7 @@ if (mysqli_num_rows($run_query)>0) {
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Best Law Agency</h4>
                             <h3 class="display-2 text-capitalize text-white mb-4">Our fighting Is for your justice</h3>
-                            <a class="btn btn-primary py-3 px-5 mt-2" href="#">Get An Appointment</a>
+                            <!-- <a class="btn btn-primary py-3 px-5 mt-2" href="#">Get An Appointment</a> -->
                         </div>
                     </div>
                 </div>
@@ -128,65 +133,7 @@ if (mysqli_num_rows($run_query)>0) {
     <!-- Services End -->
 
 
-    <!-- Appointment Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="bg-appointment rounded">
-                <div class="row h-100 align-items-center justify-content-center">
-                    <div class="col-lg-6 py-5">
-                        <div class="rounded p-5 my-5" style="background: rgba(55, 55, 63, .7);">
-                            <h1 class="text-center text-white mb-4">Get An Appointment</h1>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Your Name"
-                                        required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="Your Email"
-                                        required="required" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="date" id="date" data-target-input="nearest">
-                                                <input type="text"
-                                                    class="form-control border-0 p-4 datetimepicker-input"
-                                                    placeholder="Select Date" data-target="#date"
-                                                    data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="time" id="time" data-target-input="nearest">
-                                                <input type="text"
-                                                    class="form-control border-0 p-4 datetimepicker-input"
-                                                    placeholder="Select Time" data-target="#time"
-                                                    data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 1</option>
-                                        <option value="3">Service 1</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Get An
-                                        Appointment</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
+    
 
 
     <!-- Features Start -->
@@ -268,6 +215,8 @@ if (mysqli_num_rows($run_query)>0) {
                     <div class="bg-primary rounded" style="height: 200px;"></div>
                     <div class="owl-carousel team-carousel position-relative " style="margin-top: -97px; padding: 0 30px;">
                     <?php                      
+                    session_start();
+                    $_SESSION['useremail'] =$row['email'];
                                 while($row=mysqli_fetch_assoc($run_query)){
                             ?>
                         <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
