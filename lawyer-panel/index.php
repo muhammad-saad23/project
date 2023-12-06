@@ -1,23 +1,23 @@
 <?php
 session_start();
-if (isset($_SESSION['useremail'])) {
-  header("location:../index.php");
-  // echo "script>window.location.href=../index.php";
+if (!isset($_SESSION['useremail'])) {
+    header("location:../lawyerlogin.php");
 }
+
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
 
-// $law_id=$_GET['id'];
-$profile="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid ";
+$lawyer_id=$_SESSION['id'];
+$profile="SELECT*FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$lawyer_id'";
 $query=mysqli_query($connection,$profile);
 
 if (mysqli_num_rows($query)>0) {
   while ($data=mysqli_fetch_assoc($query)) {
+    $_SESSION['id']=$data['id'];
     
-  
 ?>
  
  <!DOCTYPE html>
@@ -95,7 +95,7 @@ if (mysqli_num_rows($query)>0) {
                 <p class="mb-0">Experience</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $data['experience']?></p>
+                <p class="text-muted mb-0"><?php echo $data['experience']?> years</p>
               </div>
             </div>
             <hr>

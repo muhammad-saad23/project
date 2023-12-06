@@ -2,24 +2,29 @@
 include("header.php");
 include("config.php");
 
-if (isset($_POST['login'])) {
-	$login_email=$_POST['log_email'];
-	$login_password=$_POST['log_password'];
+if (isset($_SESSION['clientemail'])) {
+  header("location:team.php");
+}
 
+if (isset($_POST['login'])) {
+  $login_email=$_POST['log_email'];
+	$login_password=$_POST['log_password'];
+  
 	
 	$select="SELECT *from `lawyer` as l inner join `cases` as c on l.case=c.cid where email='$login_email'";
 	$run=mysqli_query($connection,$select);
-
+  
 	if ($run) {
-        if (mysqli_num_rows($run)>0) {
-            $data=mysqli_fetch_assoc($run);
-
-            $db_password=$data['password'];
-            $pass_verify=password_verify($login_password,$db_password);
-
-            if ($pass_verify) {
-                
-                
+    if (mysqli_num_rows($run)>0) {
+      $data=mysqli_fetch_assoc($run);
+      
+      $db_password=$data['password'];
+      $pass_verify=password_verify($login_password,$db_password);
+      
+      if ($pass_verify) {
+              // session_start();
+              $_SESSION['useremail'] =$data['email'];
+              $_SESSION['id']=$data['id'];
                 echo "<script> alert('login successfully')
                         window.location.href='lawyer-panel/index.php';
                        </script>";
@@ -65,7 +70,7 @@ if (isset($_POST['login'])) {
           name="log_password" required>
 		</div>
 		<div class="form-group ">
-        <input type="submit" class="form-control form-control-user btn btn-success w-10 pb-3" name="login" required>
+        <input href="lawyer-panel/index.php" type="submit" class="form-control form-control-user btn btn-success w-10 pb-3" name="login" required> 
       </div>
       <a href="lawyerRegister.php" style="color:#3366ff;text-decoration:underline;font-weight:700;" class="mx-auto mb-3 d-flex justify-content-center">If you Not registrated</a>
 	</form>

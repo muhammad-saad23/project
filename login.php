@@ -1,13 +1,6 @@
 <?php
 include("config.php");
 
-// session_start();
-
-// if (isset($_SESSION['useremail'])) {
-//     header("location:index.php");
-// }
-
-
 // login work
 
 if (isset($_POST['submit'])) {
@@ -20,13 +13,12 @@ if (isset($_POST['submit'])) {
   if ($run) {
     if (mysqli_num_rows($run)>0) {
       $data=mysqli_fetch_assoc($run);
-
-      $db_pass=$data['password'];
-      
-      $pass_decrypt = password_verify($log_pass, $db_pass);
-      
-      if ($pass_decrypt) {
-        $_SESSION['useremail'] =$data['email'];
+       
+        $db_pass=$data['password'];
+        
+        $pass_decrypt = password_verify($log_pass, $db_pass);
+        
+        if ($pass_decrypt) {                 
 
         echo "<script> alert('login successfully')
                 window.location.href='lawyer-panel/index.php';

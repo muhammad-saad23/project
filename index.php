@@ -1,8 +1,7 @@
 <?php
+
 include("header.php");
 include("config.php");
-
-// session_start();
 
 
 
@@ -215,10 +214,11 @@ if (mysqli_num_rows($run_query)>0) {
                     <div class="bg-primary rounded" style="height: 200px;"></div>
                     <div class="owl-carousel team-carousel position-relative " style="margin-top: -97px; padding: 0 30px;">
                     <?php                      
-                    session_start();
-                    $_SESSION['useremail'] =$row['email'];
-                                while($row=mysqli_fetch_assoc($run_query)){
-                            ?>
+                                    
+                                   
+                                    while($row=mysqli_fetch_assoc($run_query)){
+                                        ?>
+                                        
                         <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
                          
                             <h5 class="mb-2 px-4"><?php echo $row['name']?></h5>

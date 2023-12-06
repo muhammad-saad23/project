@@ -62,7 +62,7 @@ if (mysqli_num_rows($run)) {
                         <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary"><?php echo $data['address']?></span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Lawyer: <span class="text-secondary">Available</span></h6></div>
                     </div>
-                    <a href="appoinment.php" class="btn btn-outline-primary">Booked Appoinment</a>
+                    <a href="appoinment.php?id=<?php echo $data['id']?>" class="btn btn-outline-primary">Booked Appoinment</a>
                 </div>
             </div>
             <?php

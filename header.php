@@ -1,9 +1,8 @@
 <?php
-// session_start();
-
-// if (!isset($_SESSION['useremail'])) {
-//     header("location:login.php");
-// }
+session_start();
+if (isset($_SESSION['useremail'])) {
+    header("location:lawyer-panel/index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +71,7 @@
                     <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
                 </div>
                 <a href="lawyerRegister.php"  class="btn btn-primary  d-lg-block" style="font-size: 18px;margin-right:5px;">Lawyer Register</a>
-                <a href="" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
+                <a href="login.php" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
             </div>
         </nav>
     </div>

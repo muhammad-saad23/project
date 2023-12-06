@@ -36,10 +36,6 @@
             </a>
 
           
-          
-          
-         
-          
          
           <li class="nav-item">
             <a href="viewclient.php" class="nav-link">

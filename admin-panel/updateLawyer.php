@@ -7,6 +7,7 @@ if (isset($_POST['update'])) {
     $lawyer_case=$_POST['case'];
     $lawyer_email=$_POST['email'];
     $lawyer_phone=$_POST['phone'];
+    $lawyer_exper=$_POST['experience'];
     $lawyer_address=$_POST['address'];
     $lawyer_image=$_FILES['image']['name'];
     $temp_img=$_FILES['image']['tmp_name'];
@@ -14,7 +15,7 @@ if (isset($_POST['update'])) {
 
     move_uploaded_file($temp_img,'image/'.$lawyer_image);
 
-    $update="UPDATE `lawyer` set `name`='$lawyer_name',`case`='$lawyer_case',`email`='$lawyer_email',`phone`='$lawyer_phone',`address`='$lawyer_address',`image`='$lawyer_image' where id='$lawyer_id'";
+    $update="UPDATE `lawyer` set `name`='$lawyer_name',`case`='$lawyer_case',`email`='$lawyer_email',`phone`='$lawyer_phone',`experience`='$lawyer_exper',`address`='$lawyer_address',`image`='$lawyer_image' where id='$lawyer_id'";
     
     $run_query=mysqli_query($connection,$update);
 

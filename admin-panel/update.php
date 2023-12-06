@@ -61,6 +61,9 @@ if (mysqli_num_rows($result)>0) {
     <label for="phone">Phone</label>
     <input type="number" class="form-control" name="phone" id="phone" required value="<?php echo $data['phone']?>">
     <br>
+    <label for="exper">Experience</label>
+    <input type="number" class="form-control" name="experience" id="exper" required value="<?php echo $data['experience']?>">
+    <br>
     <label for="address">Address</label>
     <textarea type="text" class="form-control form-control-user " id="Address" placeholder="Enter Lawyer address"
           name="address" rows="5" cols="20" required value="<?php echo $data['address']?>"></textarea>

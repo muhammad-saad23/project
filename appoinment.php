@@ -2,7 +2,10 @@
 include("header.php");
 include("config.php");
 
+
+
 if (isset($_POST['submit'])) {
+    // $app_id=$_POST['id'];
     $app_name=$_POST['name'];
     $app_email=$_POST['email'];
     $app_date=$_POST['date'];
@@ -13,11 +16,10 @@ if (isset($_POST['submit'])) {
     $run=mysqli_query($connection,$appoinment);
 
     if ($run) {
-        echo "<script>alert('Appoinment Booked')</script>
-        
-        ";
+        echo "<script>alert('Appoinment Booked')</script>";
     }
 
+    
 }
 
 ?>
@@ -57,26 +59,33 @@ if (isset($_POST['submit'])) {
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="time" id="time" data-target-input="nearest">
-                                                <input type="time" name="time" class="form-control border-0 p-4 datetimepicker-input" placeholder="Select Time" data-target="#time" data-toggle="datetimepicker"/>
+                                                <input type="text" name="time" class="form-control border-0 p-4 datetimepicker-input" placeholder="Select Time" data-target="#time" data-toggle="datetimepicker"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="custom-select border-0 px-4" name="case" style="height: 47px;">
-                                    <option selected>Open this select menu</option>
-              <?php
-   $fetch="SELECT *from`cases` where status='1' ";
-  $conn=mysqli_query($connection,$fetch);
-  if (mysqli_num_rows($conn)>0) {
-    while ($row=mysqli_fetch_assoc($conn)) { 
-     echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
-      
-    }
-  }
-  ?>
-
-                                    </select>
+                                    <select class="custom-select border-0 px-4 mb-3" name="case" style="height: 47px;">
+                                    <?php
+                                    
+                                    $id=$_GET['id'];
+                                    $select="SELECT * from `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$id'";
+                                    $res=mysqli_query($connection,$select);
+                                    
+                                    if (mysqli_num_rows($res)>0) {
+                                        while ($row=mysqli_fetch_assoc($res)) {
+                                        
+                                       
+                                            echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';                    
+                                            
+                                        
+                                    } 
+                                }
+                                    ?>
+                                    <?php
+                                   
+                                    ?>
+                                    
                                 </div>
                                 <div>
                                     <input class="btn btn-primary btn-block border-0 py-3" name="submit" value="Get An Appoinment" type="submit">

@@ -2,7 +2,7 @@
 include("header.php");
 include("config.php");
 
-// session_start();
+
 
 
 if (isset($_POST['submit'])) {
@@ -18,16 +18,18 @@ if (isset($_POST['submit'])) {
     $image_size=$_FILES['image']['size'];
   
     move_uploaded_file($tmp_image,'admin-panel/image/ '.$image_name);
-  
-   
-
+    
+    
+    
     $Enc_pass=password_hash($password,PASSWORD_BCRYPT);
+   
 
     $query="SELECT *FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where email='$email'";
     $run_query=mysqli_query($connection,$query);
     if (mysqli_num_rows($run_query)>0) {              
       echo "<script> alert('registration already success')</script>";
     }else{
+      
       $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$Enc_pass','$phone','$exper','$address','$image_name')";
       $conn_db = mysqli_query($connection, $insert);
       echo "<script> alert('Registration successfully')</script>";
@@ -105,18 +107,6 @@ if (isset($_POST['submit'])) {
 
     </div>
     
-  <?php
-  
-  $law_profile="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
-  $conn=mysqli_query($connection,$law_profile);
-  
-  if (mysqli_num_rows($conn)>0) {
-   $row=mysqli_fetch_assoc($conn);
-      ?>
-      <?php
-    
-  }
-  ?>
   <input type="submit"  href="profile.php?id=<?php echo $row['id']?>"  class="btn btn-success btn-user w-100 btn-block mb-1" name="submit">
 </form>
 </div>

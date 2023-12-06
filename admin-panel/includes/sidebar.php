@@ -57,11 +57,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer" style="background-color:#355a6e;">
+                    <!-- <div class="sb-sidenav-footer" style="background-color:#355a6e;">
                         <div class="small">Logged in as:</div>
                         Start Bootstrap
-                    </div>
+                    </div> -->
                 </nav>
             </div>
             <div id="layoutSidenav_content">
+                
                
