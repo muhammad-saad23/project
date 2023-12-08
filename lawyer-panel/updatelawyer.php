@@ -39,7 +39,7 @@ if (mysqli_num_rows($run_query)>0) {
     <select class="form-select" name="case" value="<?php echo $data['case']?>" aria-label="Default select example">
               <option selected>Open this select menu</option>
               <?php
-   $fetch="SELECT *from`cases` where status='1' ";
+   $fetch="SELECT *from`cases`  ";
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 

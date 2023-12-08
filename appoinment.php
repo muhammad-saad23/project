@@ -3,9 +3,6 @@
 include("header.php");
 include("config.php");
 
-
-
-
 if (isset($_POST['submit'])) {  
     $app_name=$_POST['name'];
     $app_email=$_POST['email'];
@@ -17,7 +14,9 @@ if (isset($_POST['submit'])) {
     $run=mysqli_query($connection,$appoinment);
     
     if ($run) {
-        echo "<script>alert('Appoinment Booked')</script>";
+        echo "<script>alert('Appoinment Booked')
+        window.location.href='index.php'
+        </script>";
     }
 
     
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
                                     <select class="custom-select border-0 px-4" name="case" style="height: 47px;">
                                     <option selected>Services</option>
               <?php
-   $fetch="SELECT *from`cases` where status='1' ";
+   $fetch="SELECT *from`cases`";
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 
@@ -93,9 +92,9 @@ if (isset($_POST['submit'])) {
 
 
 </body>
+</html>
 <?php
 include("footer.php");
 ?>
-</html>
 
 

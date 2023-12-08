@@ -2,41 +2,42 @@
 include("../config.php");
 
 session_start();
-// if (isset($_SESSION["useremail"])) {
-//     header("location:index.php");
-// }
-
-
-if (isset($_POST['submit'])) {
-    $log_email=$_POST['login_email'];
-    $log_password=$_POST['login_password'];
-
-    $login="SELECT*from `client_register` where email='$log_email'";
-    $conn_db=mysqli_query($connection,$login);
-
-    if ($conn_db) {
-        if (mysqli_num_rows($conn_db)>0) {
-            $data=mysqli_fetch_assoc($conn_db);
-
-            $db_password=$data['password'];
-            $pass_verify=password_verify($log_password,$db_password);
-
-            if ($pass_verify) {
-                
-                $_SESSION['useremail'] =$data['email'];
-                echo "<script> alert('login successfully')
-                        window.location.href='index.php';
-                       </script>";
-              }else{
-                echo "<script> alert(login unsuccessfully)</script>";
-              }
-            }else{
-              echo "<script>alert(invailed password)</script>";
-            }
-          }else{
-            echo "(query failed)";
-          }
+if (isset($_SESSION["useremail"])) {
+    header("location:index.php");
 }
+
+    // login
+    if (isset($_POST['submit'])) {
+        $login_email=$_POST['email'];
+          $login_password=$_POST['password'];
+        
+          $select="SELECT *from `admin` where email='$login_email'";
+          $run=mysqli_query($connection,$select);
+        
+          if ($run) {
+          if (mysqli_num_rows($run)>0) {
+            $data=mysqli_fetch_assoc($run);
+            
+            $db_password=$data['password'];
+            $pass_verify=password_verify($login_password,$db_password);
+            
+            if ($pass_verify) {
+                    session_start();
+                    $_SESSION['useremail'] =$data['email'];
+                    
+                      echo "<script> alert('login successfully')
+                              window.location.href='index.php';
+                             </script>";
+                    }else{
+                      echo "<script> alert(login unsuccessfully)</script>";
+                    }
+                  }else{
+                    echo "<script>alert(invailed password)</script>";
+                  }
+                }else{
+                  echo "(query failed)";
+                }
+      }
 ?>
 
 <!DOCTYPE html>
@@ -75,13 +76,13 @@ if (isset($_POST['submit'])) {
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
+                                                <a class="small" href="#">Forgot Password?</a>
                                               <input type="submit" name="submit" class="btn btn-primary">
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                        <!-- <div class="small"><a href="register.php">Need an account? Sign up!</a></div> -->
                                     </div>
                                 </div>
                             </div>

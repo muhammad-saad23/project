@@ -107,7 +107,7 @@ if (mysqli_num_rows($run_select)) {
                             <img src="<?php echo 'admin-panel/image/'.$row['image']?>" class="img-thumbnail" alt="...">
                             <div class="card-body">
                                 <h3 class="card-title"><?php echo $row['name']?></h3>
-                                <p class="text-muted"><?php echo $row['email']?></p>
+                                <p class="text-muted"><?php echo $row['case_name']?></p>
                             </div>
                             <a href="lawyertemp.php?id=<?php echo $row['id']?>" class="btn btn-primary">View Profile</a>
                         </div>

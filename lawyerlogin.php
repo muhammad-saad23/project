@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
               
               $_SESSION['id']=$data['id'];
                 echo "<script> alert('login successfully')
-                        window.location.href='lawyer-panel/index.php';
+                        window.location.href='lawyer-panel/lawyer.php';
                        </script>";
               }else{
                 echo "<script> alert(login unsuccessfully)</script>";

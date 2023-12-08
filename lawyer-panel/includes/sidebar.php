@@ -1,111 +1,41 @@
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <h3 class="mt-3 mb-3" style="text-align:center; color:white;">Atttorny-panel</h3>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <a href="index.php" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-
-          
-         
-          <li class="nav-item">
-            <a href="viewclient.php" class="nav-link">
-              <i class="nav-icon fas fa-user-alt"></i>
-              <p>
-                 Client information 
-                <!-- <i class="fas fa-angle-left right"></i> -->
-              </p>
-            </a>
-            
-          </li>
-          <li class="nav-item">
-            <a href="viewappo.php" class="nav-link">
-            <i class="nav-icon fas fa-clock"></i>
-              <p>
-                 Appoinment Details 
-                <!-- <i class="fas fa-angle-left right"></i> -->
-              </p>
-            </a>
-            
-          </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-alt"></i>
-              <p>
-                 Client information 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            
-          </li> -->
-          <li class="nav-header">Settings</li>
-         
-          
-          
-         
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
-              <p>
-                Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
-                  <p>Admin Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="registeredusers.php" class="nav-link">
-                  <p>Registered Users</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
-                  <p>Role for Users</p>
-                </a>
-              </li>
-              
-             
-            </ul>
-          </li>
-          
-         
-          
-         
-         
-         
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+<div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark bg-dark"  id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">YOUR PROFILE</div>
+                            <a class="nav-link" href="lawyer.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">DETAILS</div>
+                            <a class="nav-link collapsed" href="viewclient.php" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Client
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <!-- <a class="nav-link" href="addclient.php">Add Client</a> -->
+                                    <a class="nav-link" href="viewclient.php">View Client</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Appoinment
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="viewappo.php"  data-bs-target="#pagesCollapseError"  >
+                                        View Appoinment
+                                    </a>
+                                </nav>
+                            </div>
+                    </div>
+                   
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+               
