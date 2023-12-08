@@ -1,20 +1,21 @@
 <?php
+// session_start();
 include("header.php");
 include("config.php");
 
 
 
-if (isset($_POST['submit'])) {
-    // $app_id=$_POST['id'];
+
+if (isset($_POST['submit'])) {  
     $app_name=$_POST['name'];
     $app_email=$_POST['email'];
     $app_date=$_POST['date'];
     $app_time=$_POST['time'];
     $app_case=$_POST['case'];
     
-    $appoinment="INSERT INTO `appoinment`(`name`,`email`,`date`,`time`,`case`) values('$app_name','$app_email','$app_date','$app_time','$app_case')";
+    $appoinment="INSERT INTO `appoinment`(`name`,`email`,`case`,`date`,`time`) values('$app_name','$app_email',$app_case,'$app_date','$app_time')";
     $run=mysqli_query($connection,$appoinment);
-
+    
     if ($run) {
         echo "<script>alert('Appoinment Booked')</script>";
     }
@@ -52,7 +53,7 @@ if (isset($_POST['submit'])) {
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="date" id="date" data-target-input="nearest">
-                                                <input type="date" name="date" class="form-control border-0 p-4 datetimepicker-input" placeholder="Select Date" data-target="#date" data-toggle="datetimepicker"/>
+                                                <input type="text" name="date" class="form-control border-0 p-4 datetimepicker-input" placeholder="Select Date" data-target="#date" data-toggle="datetimepicker"/>
                                             </div>
                                         </div>
                                     </div>
@@ -65,27 +66,18 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="custom-select border-0 px-4 mb-3" name="case" style="height: 47px;">
-                                    <?php
-                                    
-                                    $id=$_GET['id'];
-                                    $select="SELECT * from `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$id'";
-                                    $res=mysqli_query($connection,$select);
-                                    
-                                    if (mysqli_num_rows($res)>0) {
-                                        while ($row=mysqli_fetch_assoc($res)) {
-                                        
-                                       
-                                            echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';                    
-                                            
-                                        
-                                    } 
-                                }
-                                    ?>
-                                    <?php
-                                   
-                                    ?>
-                                    
+                                    <select class="custom-select border-0 px-4" name="case" style="height: 47px;">
+                                    <option selected>Services</option>
+              <?php
+   $fetch="SELECT *from`cases` where status='1' ";
+  $conn=mysqli_query($connection,$fetch);
+  if (mysqli_num_rows($conn)>0) {
+    while ($row=mysqli_fetch_assoc($conn)) { 
+     echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
+      
+    }}
+  ?>
+                                    </select>
                                 </div>
                                 <div>
                                     <input class="btn btn-primary btn-block border-0 py-3" name="submit" value="Get An Appoinment" type="submit">

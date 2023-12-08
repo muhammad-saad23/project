@@ -1,68 +1,58 @@
 <?php
-include("includes/header.php");
-include("includes/topbar.php");
-include("includes/sidebar.php");
+include ("includes/header.php");
+include ("includes/topbar.php");
+include ("includes/sidebar.php");
 include("../config.php");
 
-//pagination 
-// $limit=3;
-// if (isset($_GET['pgno'])) {
-//     $pgno=$_GET['pgno'];
-// }else{
-//     $pgno=1;
-// }
-
-// $start=($pgno-1)*$limit;
-
-// view lawyer
-$select="SELECT *FROM `lawyer` as l inner join `cases` as c on l.case = c.cid";
-$query=mysqli_query($connection,$select);
-
-if (mysqli_num_rows($query)>0) {
-    # code...
+// add cases
+if (isset($_POST['btncase'])) {
+    $case_name=$_POST['addcase'];
+    $insert_case="INSERT INTO `cases`(`case_name`) values('$case_name')";
+    $run_query=mysqli_query($connection,$insert_case);
+}
 
 
 ?>
 
-<div class="container mt-5">
 
-<!-- Outer Row -->
-<div class="row justify-content-center">
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+  <div class="col-xl-10 col-lg-12 col-md-9">
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+    <h2 class="mb-3">Add Cases</h2>
+        <div class="form-group">
+          <label for="case">Add Case</label>
+          <input type="text" id="case" name="addcase" class="form-control mb-3" required>
+          <input type="submit" name="btncase" class="w-10 btn btn-success" placeholder="Enter case">
+        </div>
+    </form>
+    </div>
+    
+  </div>
 
-    <div class="col-xl-10 col-lg-12 col-md-9">
-       
-        
-    <table id="example" class="table table-striped" style="width:100%">
+  <?php
+  // show services
+  $service="SELECT*FROM `cases`";
+  $run=mysqli_query($connection,$service);
+  if (mysqli_num_rows($run)>0) {
+    
+  ?>
+  
+  <table id="example" class="table table-striped" style="width:100%">
         <thead class="bg-warning p-2 text-dark bg-opacity-10" style="opacity: 75%;">
             <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Case</th>
-            <th scope="col">Email</th>
-            <!-- <th scope="col">Address</th> -->
-            <th scope="col">Image</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Services_name</th>
             </tr>
-
         </thead>
         <tbody>
             <?php
-            while ($data=mysqli_fetch_assoc($query)) {
-                
-            
+                while ($data=mysqli_fetch_assoc($run)){
             ?>
             <tr>
-            <th scope="row"><?php echo $data['id']?></th>
-            <td><?php echo $data['name']?></td>
-            <td><?php echo $data['case_name']?></td>
-            <td><?php echo $data['email']?></td>
-            
-            <td><img src="<?php echo 'image/'. $data['image']?>" width="100px" height="100px" alt=""></td>
-            
-            
-            <td ><a href="update.php?id=<?php echo $data['id']?>" class="btn btn-outline-success">ONLINE</a></td>
-            
-            
+            <th scope="row"><?php echo $data['cid']?></th>
+            <td><?php echo $data['case_name']?></td>            
         </tr>
        <?php
 }

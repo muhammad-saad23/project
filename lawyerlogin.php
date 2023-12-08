@@ -24,6 +24,7 @@ if (isset($_POST['login'])) {
       if ($pass_verify) {
               // session_start();
               $_SESSION['useremail'] =$data['email'];
+              
               $_SESSION['id']=$data['id'];
                 echo "<script> alert('login successfully')
                         window.location.href='lawyer-panel/index.php';

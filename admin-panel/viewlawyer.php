@@ -37,7 +37,7 @@ if (mysqli_num_rows($query)>0) {
             <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Case</th>
+            <th scope="col">Specialization</th>
             <th scope="col">Email</th>
             <!-- <th scope="col">Address</th> -->
             <th scope="col">Image</th>

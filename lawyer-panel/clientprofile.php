@@ -28,25 +28,9 @@ if (mysqli_num_rows($run)>0) {
 
 <body>
   <section >
-  <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5">
+    <h1 style="text-align:center;font-weight:800;letter-spacing:2px;text-decoration:underline;">Client profile</h1>
     <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4 ">
-          <div class="card-body text-center">
-          <img src="<?php echo '../client_img/' .$data['image']?>" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;height:150px">
-            <h5 class="my-3"></h5>
-            <p class="text-muted mb-1"><?php echo $data['name']?></p>
-            <p class="text-muted mb-4"><?php echo $data['email']?></p>
-            <div class="d-flex justify-content-center mb-2">
-              <!-- <button type="button" class="btn btn-primary">Edit profile</button> -->
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-            </div>
-          </div>
-          
-        </div>
-
-      </div>
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">

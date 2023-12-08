@@ -1,16 +1,6 @@
 <?php
-
 include("header.php");
 include("config.php");
-
-
-
-
-$fetch="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
-$run_query=mysqli_query($connection,$fetch);
-
-if (mysqli_num_rows($run_query)>0) { 
-   
 ?>
 
     <!-- Carousel Start -->
@@ -201,6 +191,12 @@ if (mysqli_num_rows($run_query)>0) {
     </div>
     <!-- Action End -->
 
+    <?php
+    $fetch="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid";
+    $run_query=mysqli_query($connection,$fetch);
+    
+    if (mysqli_num_rows($run_query)>0) { 
+    ?>
 <!-- TEAM START -->
     <div class="container-fluid py-5">
         <div class="container py-5">

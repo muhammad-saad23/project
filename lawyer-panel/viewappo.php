@@ -1,14 +1,16 @@
 <?php
+session_start();        
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
-$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid";
+$app_id=$_SESSION['id'];
+$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid where id='$app_id'";
 $view=mysqli_query($connection,$select_app);
 
 if (mysqli_num_rows($view)>0) {
-    
+   
 
 
 ?>
@@ -30,7 +32,7 @@ if (mysqli_num_rows($view)>0) {
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Case</th>
-            <th scope="col">Update</th>
+            <!-- <th scope="col">Update</th> -->
             <th scope="col">Delete</th>
             </tr>
 
@@ -38,7 +40,7 @@ if (mysqli_num_rows($view)>0) {
         <tbody>
             <?php
             while ($data=mysqli_fetch_assoc($view)) {
-                
+                $_SESSION['id']=$data['id'];
             
             ?>
             <tr>
@@ -51,7 +53,7 @@ if (mysqli_num_rows($view)>0) {
             <!-- <td><img src="" alt=""></td> -->
             
             <!-- <td ><a href="" class="btn btn-primary">Profile</a></td> -->
-            <td ><a href="" class="btn btn-success">Update</a></td>
+            <!-- <td ><a href="" class="btn btn-success">Update</a></td> -->
             <td ><a href=""  class="btn btn-danger">Delete</a></td>
             
         </tr>

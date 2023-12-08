@@ -54,7 +54,7 @@ if (mysqli_num_rows($run)) {
                     <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum. Amet dolor stet lorem diam dolor justo et dolor dolor dolor</p>
                     <div class="row mb-3">
                         <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary"><?php echo $data['name']?></span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Services: <span class="text-secondary"><?php echo $data['case_name']?></span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Specialization: <span class="text-secondary"><?php echo $data['case_name']?></span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">LLB</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary"><?php echo $data['experience']?> Years</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary"><?php echo $data['phone']?></span></h6></div>

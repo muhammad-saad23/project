@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             <select class="form-select" name="case" aria-label="Default select example">
               <option >Your Services</option>
               <?php
-   $fetch="SELECT *from`cases` where status='1' ";
+   $fetch="SELECT *from`cases`";
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 

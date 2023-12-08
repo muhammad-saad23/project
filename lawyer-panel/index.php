@@ -43,8 +43,9 @@ if (mysqli_num_rows($query)>0) {
             <p class="text-muted mb-1"><?php echo $data['name']?></p>
             <p class="text-muted mb-4"><?php echo $data['case_name']?></p>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Edit profile</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              <a href="updatelawyer.php?id=<?php echo $data['id']?>" class="btn btn-success">Edit profile</a>
+              <!-- <button type="button" class="btn btn-primary">Edit profile</button> -->
+              <!-- <button type="button" class="btn btn-outline-primary ms-1">Message</button> -->
             </div>
           </div>
           
@@ -65,7 +66,7 @@ if (mysqli_num_rows($query)>0) {
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Case</p>
+                <p class="mb-0">Specialization</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"><?php echo $data['case_name']?></p>

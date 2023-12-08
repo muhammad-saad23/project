@@ -1,24 +1,22 @@
 <?php
-session_start();
-include('includes/header.php');
-include('includes/topbar.php');
-include('includes/sidebar.php');
+include("includes/header.php");
+include("includes/topbar.php");
+include("includes/sidebar.php");
 include("../config.php");
 
-$client_id=$_SESSION['id'];
-$client="SELECT * FROM `client_register` where id='$client_id'";
-$conn_client=mysqli_query($connection,$client);
-
-if (mysqli_num_rows($conn_client)>0) {
-    
 
 
+// view lawyer
+$select="SELECT *FROM `client_register`";
+$query=mysqli_query($connection,$select);
+
+if (mysqli_num_rows($query)>0) {
+    # code...
 
 
 ?>
 
-
-<div class="container-fluid mt-5">
+<div class="container mt-5">
 
 <!-- Outer Row -->
 <div class="row justify-content-center">
@@ -36,68 +34,36 @@ if (mysqli_num_rows($conn_client)>0) {
             <th scope="col">Phone</th>
             <th scope="col">Address</th>
             <th scope="col">Profile</th>
+            <!-- <th scope="col">Update</th> -->
             <th scope="col">Delete</th>
             </tr>
 
         </thead>
         <tbody>
             <?php
-            while ($data=mysqli_fetch_assoc($conn_client)) {
-                $_SESSION['id']=$data['id'];
+            while ($data=mysqli_fetch_assoc($query)) {
+                
             
             ?>
-            
+            <tr>
             <th scope="row"><?php echo $data['id']?></th>
             <td><?php echo $data['name']?></td>
             <td><?php echo $data['age']?></td>
             <td><?php echo $data['email']?></td>
             <td><?php echo $data['phone']?></td>
             <td><?php echo $data['address']?></td>
-            
-            
-            
+             
             <td ><a href="clientprofile.php?id=<?php echo $data['id']?>" class="btn btn-primary">Profile</a></td>
-            <td ><a href="clientdelete.php?id=<?php echo $data['id']?>"  class="btn btn-danger">Delete</a></td>
+            <td ><a href=".php?id=<?php echo $data['id']?>"  class="btn btn-danger">Delete</a></td>
             
         </tr>
-        <?php
-        }
-    }
-        ?>
+       <?php
+}
+}
+            ?>
       
         </tbody>
-        
     </table>
-
-    <?php
-            
-//     $pagination="SELECT *FROM `lawyer`";
-//     $run=mysqli_query($connection,$pagination);
-
-//     if (mysqli_num_rows($run)>0) {
-//         $total_record=mysqli_num_rows($run);
-//         $total_page=ceil($total_record / $limit);
-
-//         echo '<ul class="pagination">';
-//         if ($pgno > 1) {
-            
-//             echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno - 1).'">Previous</a></li>';
-//         }
-    
-    
-//     for ($i=1; $i < $total_page ; $i++) { 
-//         echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.$i.'">'.$i.'</a></li>';
-        
-//     }
-    
-//     if ($pgno < $total_page) {
-//         echo '<li class="page-item"><a class="page-link" href="viewlawyer.php?pgno='.($pgno + 1).'">Next</a></li>';
-//     }
-//     echo '</ul>';
-
-// }
-    ?>
-   
 
     </div>
 
@@ -108,8 +74,8 @@ if (mysqli_num_rows($conn_client)>0) {
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script>new DataTable('#example');</script>
-</body>
-</html>
 <?php
 include("includes/footer.php");
 ?>
+</body>
+</html>
