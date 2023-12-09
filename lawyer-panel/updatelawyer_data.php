@@ -25,7 +25,7 @@ if (isset($_POST['update'])) {
 
     if ($conn_query) {
         echo "<script> alert('Updated successfully')
-                        window.location.href='index.php';
+                        window.location.href='lawyer.php';
                        </script>";
     }else{
         echo "query failed";

@@ -1,8 +1,23 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" >
+<nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color:#2e2d2d;" >
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="">
-                <img src="" width="10px"  alt="">
+            <?php
+            include("../config.php");
+            $id=$_SESSION['id'];
+            $query="SELECT*FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$id'";
+            $run=mysqli_query($connection,$query);
+            if (mysqli_num_rows($run)>0) {
+                while ($data=mysqli_fetch_assoc($run)) {
+                    // session_start();
+                    $_SESSION['id']=$data['id'];
+                
+            ?>
+            <a class="navbar-brand ps-3 mt-3 mb-3 " href="">
+                <img src="<?php echo '../admin-panel/image/' .$data['image']?>" width="50px" style="border-radius:25px;"  alt="">
+                
+                <span><?php echo $data['name']?></span>
             </a>
+            <?php }
+            } ?>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->

@@ -1,16 +1,17 @@
 <?php
+session_start();
 include('includes/header.php');
-include('includes/topbar.php');
 include('includes/sidebar.php');
+include('includes/topbar.php');
 include("../config.php");
 
-$law_id=$_GET['id'];
+$law_id=$_SESSION['id'];
 $select_data="SELECT*from `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$law_id'";
 $run_query=mysqli_query($connection,$select_data);
 
 if (mysqli_num_rows($run_query)>0) {
     while ($data=mysqli_fetch_assoc($run_query)) {
-        
+    $_SESSION['id']=$data['id'];    
     
 ?>
 
@@ -39,7 +40,7 @@ if (mysqli_num_rows($run_query)>0) {
     <select class="form-select" name="case" value="<?php echo $data['case']?>" aria-label="Default select example">
               <option selected>Open this select menu</option>
               <?php
-   $fetch="SELECT *from`cases`  ";
+   $fetch="SELECT *from`cases`";
   $conn=mysqli_query($connection,$fetch);
   if (mysqli_num_rows($conn)>0) {
     while ($row=mysqli_fetch_assoc($conn)) { 

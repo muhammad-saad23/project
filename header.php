@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['useremail'])) {
-    header("location:lawyer-panel/index.php");
+    header("location:lawyer-panel/lawyer.php");
 }
 ?>
 

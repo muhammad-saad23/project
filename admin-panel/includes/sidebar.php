@@ -49,21 +49,18 @@
                             </a>
                             <div class="collapse" id="collapse" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav" >
-                                    <a class="nav-link" href="addlawyer.php">Add Lawyer</a>
+                                    <!-- <a class="nav-link" href="addlawyer.php">Add Lawyer</a> -->
                                     <a class="nav-link" href="viewlawyer.php">View Lawyer</a>
                                     <!-- <a class="nav-link" href="profilelawyer.php">View Profile</a> -->
                                 </nav>
                             </div>
-                            <a class="nav-link" href="tables.html">
+                            <!-- <a class="nav-link" href="tables.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
-                            </a>
+                            </a> -->
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer" style="background-color:#355a6e;">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+                    
                 </nav>
             </div>
             <div id="layoutSidenav_content">

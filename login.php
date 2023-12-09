@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         if ($pass_decrypt) {                 
 
         echo "<script> alert('login successfully')
-                window.location.href='lawyer-panel/index.php';
+                window.location.href='index.php';
                </script>";
       }else{
         echo "<script> alert(login unsuccessfully)</script>";

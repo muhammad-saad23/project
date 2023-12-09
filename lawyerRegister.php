@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
       $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$Enc_pass','$phone','$exper','$address','$image_name')";
       $conn_db = mysqli_query($connection, $insert);
       echo "<script> alert('Registration successfully')</script>";
-      header("location:lawyer-panel/index.php");
+      header("location:lawyerlogin.php");
     }
   }
     

@@ -1,14 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['useremail'])) {
-    header("location:../lawyerlogin.php");
-}
-
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
+if (!isset($_SESSION['useremail'])) {
+  header("location:../lawyerlogin.php");
+}
 
 $lawyer_id=$_SESSION['id'];
 $profile="SELECT*FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$lawyer_id'";

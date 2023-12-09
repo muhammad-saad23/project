@@ -6,38 +6,40 @@ if (isset($_SESSION["useremail"])) {
     header("location:index.php");
 }
 
-    // login
-    if (isset($_POST['submit'])) {
-        $login_email=$_POST['email'];
-          $login_password=$_POST['password'];
+if (isset($_POST['submit'])) {
+    $login_email=$_POST['login_email'];
+      $login_password=$_POST['login_password'];
+    
+      
+      $select="SELECT *from `admin` where email='$login_email'";
+      $run=mysqli_query($connection,$select);
+    
+      if ($run) {
+      if (mysqli_num_rows($run)>0) {
+        $data=mysqli_fetch_assoc($run);
         
-          $select="SELECT *from `admin` where email='$login_email'";
-          $run=mysqli_query($connection,$select);
+        $db_password=$data['password'];
+        $pass_verify=password_verify($login_password,$db_password);
         
-          if ($run) {
-          if (mysqli_num_rows($run)>0) {
-            $data=mysqli_fetch_assoc($run);
-            
-            $db_password=$data['password'];
-            $pass_verify=password_verify($login_password,$db_password);
-            
-            if ($pass_verify) {
-                    session_start();
-                    $_SESSION['useremail'] =$data['email'];
-                    
-                      echo "<script> alert('login successfully')
-                              window.location.href='index.php';
-                             </script>";
-                    }else{
-                      echo "<script> alert(login unsuccessfully)</script>";
-                    }
-                  }else{
-                    echo "<script>alert(invailed password)</script>";
-                  }
+        if ($pass_verify) {
+                // session_start();
+                $_SESSION['useremail'] =$data['email'];
+                
+                $_SESSION['id']=$data['id'];
+                  echo "<script> alert('login successfully')
+                          window.location.href='index.php';
+                         </script>";
                 }else{
-                  echo "(query failed)";
+                  echo "<script> alert(login unsuccessfully)</script>";
                 }
-      }
+              }else{
+                echo "<script>alert(invailed password)</script>";
+              }
+            }else{
+              echo "(query failed)";
+            }
+  }
+       
 ?>
 
 <!DOCTYPE html>
