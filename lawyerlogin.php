@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
       $pass_verify=password_verify($login_password,$db_password);
       
       if ($pass_verify) {
-              // session_start();
+              session_start();
               $_SESSION['useremail'] =$data['email'];
               
               $_SESSION['id']=$data['id'];

@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
@@ -15,6 +15,7 @@ $query=mysqli_query($connection,$profile);
 
 if (mysqli_num_rows($query)>0) {
   while ($data=mysqli_fetch_assoc($query)) {
+    // session_start();
     $_SESSION['id']=$data['id'];
     
 ?>
