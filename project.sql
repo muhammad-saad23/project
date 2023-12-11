@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Dec 08, 2023 at 01:55 PM
+-- Generation Time: Dec 11, 2023 at 10:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`) VALUES
+(3, 'ms2258881@gmail.com', '$2y$10$1XOFy0uOOB6j1OFMkkXpO.ftbNKFln4amTUltaqIKuX/c.7XcyG3C');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `appoinment`
 --
 
@@ -35,6 +54,13 @@ CREATE TABLE `appoinment` (
   `date` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appoinment`
+--
+
+INSERT INTO `appoinment` (`id`, `name`, `email`, `case`, `date`, `time`) VALUES
+(1, 'Fahad junaid', 'fahad@gmail.com', 8, '12/27/2023', '6:05 AM');
 
 -- --------------------------------------------------------
 
@@ -89,6 +115,28 @@ INSERT INTO `client_register` (`id`, `name`, `age`, `email`, `password`, `phone`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`) VALUES
+(1, 'muhammad saad', 'ms2350138@gmail.com', '03152458811', 'This is great website'),
+(3, 'Fahad junaid', 'fahad@gmail.com', '03122458881', 'Amazing website');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lawyer`
 --
 
@@ -109,11 +157,19 @@ CREATE TABLE `lawyer` (
 --
 
 INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `password`, `phone`, `experience`, `address`, `image`) VALUES
-(1, 'muhammad saad', 1, 'ms2258881@gmail.com', '$2y$10$3GJfpwVysVlunV49OsAd6unPnTlaP6e6D8RFb65ACf1LhBX.AAzrq', 2147483647, '5', 'Pakistan,Karachi', 'lawyer-1.jpg');
+(1, 'muhammad saad', 1, 'ms2258881@gmail.com', '$2y$10$ub8smvS3a5LdafbL.6MHOumvpbwOMLXeIladQBbWsg1Zb1apl9n2m', 2147483647, '5', 'Pakistan,Karachi', 'lawyer-1.jpg'),
+(2, 'Syed sami ', 6, 'sami@gmail.com', '$2y$10$X8rZkqoopNl2IufxD84xGubBejCfonPKYicWQvwM17IorDi4439V6', 2147483647, '5', 'Pakistan,Islamabad', 'lawyer-4.jpg'),
+(3, 'Ravi kumar', 2, 'ravi@gmail.com', '$2y$10$GwZ4DDGxMnCrmmRsJCYc5eTp4zev08jj72m.laJ.aRgbp1kHu0pae', 2147483647, '8', 'India,Mumbai', 'lawyer-5.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `appoinment`
@@ -135,6 +191,12 @@ ALTER TABLE `client_register`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lawyer`
 --
 ALTER TABLE `lawyer`
@@ -146,10 +208,16 @@ ALTER TABLE `lawyer`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `appoinment`
 --
 ALTER TABLE `appoinment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cases`
@@ -164,10 +232,16 @@ ALTER TABLE `client_register`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
