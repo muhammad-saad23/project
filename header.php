@@ -63,9 +63,10 @@ if (isset($_SESSION['useremail'])) {
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                             style="font-size: 20px;">Dropdown</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu Item 1</a>
-                            <a href="#" class="dropdown-item">Menu Item 2</a>
-                            <a href="#" class="dropdown-item">Menu Item 3</a>
+                            <a href="criminallaw.php" class="dropdown-item">Criminal-Law</a>
+                            <a href="divorcelaw.php" class="dropdown-item">Divorce-Law</a>
+                            <a href="corporatelawyer.php" class="dropdown-item">Corporate-Law</a>
+                            <a href="civillawyer.php" class="dropdown-item">Civil-Law</a>
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
