@@ -1,29 +1,36 @@
 <?php
 include("config.php");
-
 // login work
+// if (isset($_SESSION['clientemail'])) {
+//   // header("location:index.php");
+// }
+
 
 if (isset($_POST['submit'])) {
   $log_email=$_POST['login_email'];
   $log_pass=$_POST['login_pass'];
-
+  
   $select="SELECT *from `client_register` where email='$log_email'";
   $run=mysqli_query($connection,$select);
-
+  
   if ($run) {
     if (mysqli_num_rows($run)>0) {
-      $data=mysqli_fetch_assoc($run);
-       
-        $db_pass=$data['password'];
-        
-        $pass_decrypt = password_verify($log_pass, $db_pass);
-        
-        if ($pass_decrypt) {                 
+      $data=mysqli_fetch_assoc($run);  
+      $db_pass=$data['password'];
+      $pass_decrypt = password_verify($log_pass, $db_pass);
+      
+      session_start();
+        $_SESSION['clientemail']=$data['email'];
+        $_SESSION['clientid']=$data['id'];
+     
 
-        echo "<script> alert('login successfully')
-                window.location.href='index.php';
-               </script>";
-      }else{
+        if ($pass_decrypt) {                 
+          echo "<script> alert('login successfully')
+          window.location.href='appoinment.php'
+          </script>";
+          
+          
+        }else{
         echo "<script> alert(login unsuccessfully)</script>";
       }
     }else{
@@ -142,7 +149,7 @@ height: 100%;
               <!-- Submit button -->
              <input type="submit" value="Login" class="btn btn-primary w-100 mb-3" name="submit">
   
-              <a href="register.php"><h5 style="text-align: center;">Don't Registrated</h5></a>
+              <a href="register.php"><h5 style="text-align: center;">Registration</h5></a>
             </form>
   
           </div>

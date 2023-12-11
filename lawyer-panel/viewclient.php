@@ -1,12 +1,12 @@
 <?php
-session_start();
+// session_start();
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
-$client_id=$_SESSION['id'];
-$client="SELECT * FROM `client_register` where id='$client_id'";
+
+$client="SELECT * FROM `client_register`";
 $conn_client=mysqli_query($connection,$client);
 
 if (mysqli_num_rows($conn_client)>0) {

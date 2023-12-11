@@ -1,5 +1,5 @@
 <?php
-session_start();        
+// session_start();        
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
@@ -32,15 +32,14 @@ if (mysqli_num_rows($view)>0) {
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Case</th>
-            <!-- <th scope="col">Update</th> -->
-            <th scope="col">Delete</th>
+       
             </tr>
 
         </thead>
         <tbody>
             <?php
             while ($data=mysqli_fetch_assoc($view)) {
-                $_SESSION['id']=$data['id'];
+                $_SESSION['appoid']=$data['id'];
             
             ?>
             <tr>
@@ -54,7 +53,7 @@ if (mysqli_num_rows($view)>0) {
             
             <!-- <td ><a href="" class="btn btn-primary">Profile</a></td> -->
             <!-- <td ><a href="" class="btn btn-success">Update</a></td> -->
-            <td ><a href=""  class="btn btn-danger">Delete</a></td>
+            
             
         </tr>
       <?php

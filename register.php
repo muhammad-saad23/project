@@ -48,14 +48,6 @@ background-position: right center;
 background-size: auto 100%;
 } */
 
-body{
-        background-image:url("img/login.jpg");
-        background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-            }
-     
-
 /* @media (min-width: 1025px) {
 .h-custom-2 {
 height: 100%;
@@ -130,3 +122,4 @@ height: 100%;
   <!-- Section: Design Block -->
 </body>
 </html>
+<?php include("footer.php")?>

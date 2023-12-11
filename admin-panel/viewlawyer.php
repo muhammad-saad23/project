@@ -42,7 +42,7 @@ if (mysqli_num_rows($query)>0) {
             <!-- <th scope="col">Address</th> -->
             <th scope="col">Image</th>
             <th scope="col">Profile</th>
-            <th scope="col">Update</th>
+            <!-- <th scope="col">Update</th> -->
             <th scope="col">Delete</th>
             </tr>
 
@@ -62,7 +62,6 @@ if (mysqli_num_rows($query)>0) {
             <td><img src="<?php echo 'image/'. $data['image']?>" width="100px" height="100px" alt=""></td>
             
             <td ><a href="profilelawyer.php?id=<?php echo $data['id']?>" class="btn btn-primary">Profile</a></td>
-            <td ><a href="update.php?id=<?php echo $data['id']?>" class="btn btn-success">Update</a></td>
             <td ><a href="deletelawyer.php?id=<?php echo $data['id']?>"  class="btn btn-danger">Delete</a></td>
             
         </tr>
