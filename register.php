@@ -22,8 +22,10 @@ if (isset($_POST['submit'])) {
 
   $query="SELECT *FROM `client_register` where email='$email'";
   $run_query=mysqli_query($connection,$query);
-  if (mysqli_num_rows($run_query)>0) {              
+  if (mysqli_num_rows($run_query)>0) {    
+    $data = mysqli_fetch_assoc($run_query);          
     echo "email already exists";
+   
   }else{
     $insert = "INSERT INTO `client_register`(`name`,`age`,`email`,`password`,`phone`,`address`)VALUES ('$name','$age','$email','$Enc_pass','$phone','$address')";
     $conn_db = mysqli_query($connection, $insert);

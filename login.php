@@ -1,16 +1,21 @@
 <?php
+ session_start();
+ if(isset($_SESSION['clientemail'])){
+  echo '<script>
+  window.location.href = "appoinment.php";
+  </script>';
+ }
+
 include("config.php");
 // login work
-// if (isset($_SESSION['clientemail'])) {
-//   // header("location:index.php");
-// }
+
 
 
 if (isset($_POST['submit'])) {
   $log_email=$_POST['login_email'];
   $log_pass=$_POST['login_pass'];
   
-  $select="SELECT *from `client_register` where email='$log_email'";
+  $select="SELECT * from `client_register` where email='$log_email'";
   $run=mysqli_query($connection,$select);
   
   if ($run) {
@@ -18,11 +23,9 @@ if (isset($_POST['submit'])) {
       $data=mysqli_fetch_assoc($run);  
       $db_pass=$data['password'];
       $pass_decrypt = password_verify($log_pass, $db_pass);
+      $_SESSION['clientid'] = $data['id'];
+      $_SESSION['clientemail'] = $data['email'];
       
-      session_start();
-        $_SESSION['clientemail']=$data['email'];
-        $_SESSION['clientid']=$data['id'];
-     
 
         if ($pass_decrypt) {                 
           echo "<script> alert('login successfully')
@@ -31,10 +34,10 @@ if (isset($_POST['submit'])) {
           
           
         }else{
-        echo "<script> alert(login unsuccessfully)</script>";
+        echo "<script> alert('login unsuccessfully')</script>";
       }
     }else{
-      echo "<script>alert(invailed password)</script>";
+      echo "<script>alert('invailed password')</script>";
     }
   }else{
     echo "(query failed)";

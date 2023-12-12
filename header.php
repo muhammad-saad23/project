@@ -1,7 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['useremail'])) {
-    header("location:lawyer-panel/lawyer.php");
+if (isset($_SESSION['clientemail'])) {
+    echo '<script>
+    window.location.href = "index.php";
+    </script>';
 }
 ?>
 
@@ -46,9 +48,13 @@ if (isset($_SESSION['useremail'])) {
                 </a>
             </div>
         </div>
+
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
             <a href="index.html" class="navbar-brand d-block d-lg-none">
             </a>
+<?php
+if (isset($_SESSION['clientemail'])) {
+    ?>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,11 +75,53 @@ if (isset($_SESSION['useremail'])) {
                             <a href="civillawyer.php" class="dropdown-item">Civil-Law</a>
                         </div>
                     </div>
-                    <a href="contact.php" class="nav-item nav-link" style="font-size: 20px;">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                            style="font-size: 20px;"><?php echo $_SESSION['clientemail'] ?></a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                    <a href="logout.php" class="nav-item nav-link" >Logout</a>
+                        </div>
+                    </div>
+
                 </div>
-                <a href="lawyerRegister.php"  class="btn btn-primary  d-lg-block" style="font-size: 18px;margin-right:5px;">Lawyer Register</a>
-                <a href="login.php" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
+
+                <?php
+} else {
+
+    ?>
+
+                <div class="navbar-nav mx-auto  py-0">
+                    <a href="index.php" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
+                    <a href="about.php" class="nav-item nav-link" style="font-size: 20px;">About</a>
+                    <a href="service.php" class="nav-item nav-link" style="font-size: 20px;">Practice</a>
+                    <a href="team.php" class="nav-item nav-link" style="font-size: 20px;">Attorneys</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                            style="font-size: 20px;">Dropdown</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="criminallaw.php" class="dropdown-item">Criminal-Law</a>
+                            <a href="divorcelaw.php" class="dropdown-item">Divorce-Law</a>
+                            <a href="corporatelawyer.php" class="dropdown-item">Corporate-Law</a>
+                            <a href="civillawyer.php" class="dropdown-item">Civil-Law</a>
+                        </div>
+                    </div>
             </div>
+            <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                            style="font-size: 20px;">Register</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="lawyerRegister.php" class="dropdown-item">Register as Lawyer</a>
+                            <a href="register.php" class="dropdown-item">Register as Client</a>
+                           
+                        </div>
+                    </div>
+                    <a href="login.php" class="btn btn-primary   d-lg-block" style="font-size: 18px;">Login</a>
+
+
+        <?php
+}
+?>
+
         </nav>
     </div>
     </div>

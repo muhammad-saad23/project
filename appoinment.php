@@ -2,9 +2,7 @@
 // session_start();
 include("header.php");
 include("config.php");
-// if (isset($_SESSION['clientemail'])) {
-//     header("location:login.php");
-// }
+
 
 if (isset($_POST['submit'])) {  
     $app_name=$_POST['name'];

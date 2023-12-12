@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
   $phone=mysqli_real_escape_string($connection,$_POST['phone']);
   $exper=mysqli_real_escape_string($connection,$_POST['experience']);
   $address=mysqli_real_escape_string($connection,$_POST['address']);
+
     $image_name=$_FILES['image']['name'];
     $tmp_image=$_FILES['image']['tmp_name'];
     $image_size=$_FILES['image']['size'];
@@ -30,7 +31,7 @@ if (isset($_POST['submit'])) {
       $insert="INSERT INTO `lawyer`(`name`,`case`,`email`,`password`,`phone`,`experience`,`address`,`image`) values('$name','$case','$email','$Enc_pass','$phone','$exper','$address','$image_name')";
       $conn_db = mysqli_query($connection, $insert);
       echo "<script> alert('Registration successfully')</script>";
-      header("location:lawyerlogin.php");
+      header("location:lawyer-panel/lawyer.php");
     }
   }
     

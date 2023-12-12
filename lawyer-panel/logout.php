@@ -3,8 +3,7 @@ include("../config.php");
 
 session_start();
 
-session_unset();
+unset($_SESSION['useremail']);
 
-session_destroy();
 header("location:../lawyerlogin.php");
 ?>
