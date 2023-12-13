@@ -244,7 +244,7 @@ if (mysqli_num_rows($run_select)) {
 </body>
 
 <?php
-// include("footer.php"); 
+include("footer.php"); 
 
 ?>
 </html>

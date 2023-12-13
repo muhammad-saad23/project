@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Dec 11, 2023 at 10:35 AM
+-- Generation Time: Dec 13, 2023 at 09:58 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `password`) VALUES
-(3, 'ms2258881@gmail.com', '$2y$10$1XOFy0uOOB6j1OFMkkXpO.ftbNKFln4amTUltaqIKuX/c.7XcyG3C');
+(3, 'saad@gmail.com', '$2y$10$1XOFy0uOOB6j1OFMkkXpO.ftbNKFln4amTUltaqIKuX/c.7XcyG3C');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,9 @@ CREATE TABLE `appoinment` (
 --
 
 INSERT INTO `appoinment` (`id`, `name`, `email`, `case`, `date`, `time`) VALUES
-(1, 'Fahad junaid', 'fahad@gmail.com', 8, '12/27/2023', '6:05 AM');
+(16, 'Raza khan', 'raza@gmail.com', 2, '02/15/2024', '11:05 PM'),
+(17, 'hasan ahmed', 'hasan@gmail.com', 5, '02/28/2024', '3:20 PM'),
+(18, 'Fahad junaid', 'fahad@gmail.com', 6, '12/30/2023', '11:05 PM');
 
 -- --------------------------------------------------------
 
@@ -81,12 +83,12 @@ INSERT INTO `cases` (`cid`, `case_name`) VALUES
 (1, 'Criminal-case'),
 (2, 'Family-case'),
 (3, 'Busniess-case'),
-(4, 'Civil-case'),
 (5, 'Divorce-case'),
 (6, 'Real Estate case'),
 (7, 'Tax-case'),
 (8, 'Bankruptcy-case'),
-(9, 'Murder-case');
+(9, 'Murder-case'),
+(10, 'Civil-case');
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,8 @@ CREATE TABLE `client_register` (
 --
 
 INSERT INTO `client_register` (`id`, `name`, `age`, `email`, `password`, `phone`, `address`, `image`) VALUES
-(10, 'muhammad saad', 18, 'ms2258881@gmail.com', '$2y$10$NG8IbgUz9v6Cd9kOpGBDsunEjBiwWFo65WXZh31K806PwDatMJIQ.', '03122458881', 'Karachi', '');
+(14, 'muhammad saad', 21, 'saad@gmail.com', '$2y$10$V45wWKzFH9mvM60.qxRwIebVtUUQxEd/VisRqvhAquL2F.cTkR/da', '03122458881', 'Karachi', ''),
+(15, 'Fahad junaid', 24, 'fahad@gmail.com', '$2y$10$5TGQRrnrUFj2PgCxMI2jPeDtFGK244h7Kmeh4ToNmK7w..D9PE5Oi', '03152458811', 'Lahore', '');
 
 -- --------------------------------------------------------
 
@@ -131,8 +134,9 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`) VALUES
-(1, 'muhammad saad', 'ms2350138@gmail.com', '03152458811', 'This is great website'),
-(3, 'Fahad junaid', 'fahad@gmail.com', '03122458881', 'Amazing website');
+(4, 'Fahad junaid', 'fahad@gmail.com', '03256669911', 'This is good'),
+(5, 'Raza khan', 'raza@gmail.com', '03152458811', 'great'),
+(6, 'Ayesha Khan', 'Ayesha@gmail.com', '03152458811', 'Amazing website for lawyers');
 
 -- --------------------------------------------------------
 
@@ -157,9 +161,11 @@ CREATE TABLE `lawyer` (
 --
 
 INSERT INTO `lawyer` (`id`, `name`, `case`, `email`, `password`, `phone`, `experience`, `address`, `image`) VALUES
-(1, 'muhammad saad', 1, 'ms2258881@gmail.com', '$2y$10$ub8smvS3a5LdafbL.6MHOumvpbwOMLXeIladQBbWsg1Zb1apl9n2m', 2147483647, '5', 'Pakistan,Karachi', 'lawyer-1.jpg'),
-(2, 'Syed sami ', 6, 'sami@gmail.com', '$2y$10$X8rZkqoopNl2IufxD84xGubBejCfonPKYicWQvwM17IorDi4439V6', 2147483647, '5', 'Pakistan,Islamabad', 'lawyer-4.jpg'),
-(3, 'Ravi kumar', 2, 'ravi@gmail.com', '$2y$10$GwZ4DDGxMnCrmmRsJCYc5eTp4zev08jj72m.laJ.aRgbp1kHu0pae', 2147483647, '8', 'India,Mumbai', 'lawyer-5.jpg');
+(11, 'muhammad saad', 3, 'ms22458881@gmail.com', '$2y$10$KUK0hphjh/J.N8qb2QtGQOyMIKDOYNrDguTaUu9t6hnV38EXgCDRW', 2147483647, '5', 'Pakistan,Karachi', 'lawyer-1.jpg'),
+(12, 'Syed sami ', 6, 'sami@gmail.com', '$2y$10$Kc.Mxctje.s7iA.1SnnyFu6fh3/esFGcxWDk1cuSDG891jdZqtn6q', 2147483647, '8', 'Pakistan,Islamabad', 'lawyer-4.jpg'),
+(13, 'marium Khan', 5, 'marium@gmail.com', '$2y$10$z.TC1WflqfL7Go.O3M6.V.rdJUxdm63vtUeGubx1Eg8fHbnHIKqAu', 2147483647, '10', 'Pakistan,Lahore', 'lawyer-3.jpg'),
+(14, 'Ravi kumar', 2, 'ravi@gmail.com', '$2y$10$Nv7.G53YiS0BHGGDBqqMjemhwro.Iw8QMJP.TJF99aYzrKrWCv0Ou', 2147483647, '6', 'India,Mumbai', 'lawyer-5.jpg'),
+(15, 'Brad Johnson', 8, 'brad@gmail.com', '$2y$10$oeP26OrUvc1moDAM/.zPmudUeeu/HoxY.zkSL9o88.wQJJX0slO46', 2147483647, '7', 'USA,new york', 'lawyer-12.jpg');
 
 --
 -- Indexes for dumped tables
@@ -217,31 +223,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appoinment`
 --
 ALTER TABLE `appoinment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `cid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `client_register`
 --
 ALTER TABLE `client_register`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `lawyer`
 --
 ALTER TABLE `lawyer`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

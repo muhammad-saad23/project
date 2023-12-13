@@ -5,6 +5,10 @@ if (isset($_SESSION['clientemail'])) {
     window.location.href = "index.php";
     </script>';
 }
+
+if (isset($_SESSION['useremail'])) {
+    header("location:lawyer-panel/lawyer.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +54,7 @@ if (isset($_SESSION['clientemail'])) {
         </div>
 
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <a href="index.php" class="navbar-brand d-block d-lg-none">
             </a>
 <?php
 if (isset($_SESSION['clientemail'])) {
@@ -89,7 +93,7 @@ if (isset($_SESSION['clientemail'])) {
 } else {
 
     ?>
-
+                    <a href="index.php"> <img src="img/logo.png" style="height: 100px;" alt=""></a>
                 <div class="navbar-nav mx-auto  py-0">
                     <a href="index.php" class="nav-item nav-link active" style="font-size: 20px;">Home</a>
                     <a href="about.php" class="nav-item nav-link" style="font-size: 20px;">About</a>

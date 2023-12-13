@@ -5,9 +5,9 @@ include ("includes/sidebar.php");
 include("../config.php");
 
 // profile
-$law_id=$_GET['id'];
+$client_id=$_GET['id'];
 
-$profile="SELECT * FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$law_id'";
+$profile="SELECT * FROM `client_register` where id='$client_id'";
 $run_query=mysqli_query($connection,$profile);
 
 if (mysqli_num_rows($run_query)>0) {
@@ -27,25 +27,9 @@ if (mysqli_num_rows($run_query)>0) {
 </head>
 
 <body>
-  <div class="container mt-5 ">
+    <div class="container mt-5 ">
+      <h1 style="text-align:center;">Client profile</h1>
     <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-          <img src="<?php echo 'image/'.$row['image']?>" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;height:150px">
-            <h5 class="my-3"><?php echo $row['name']?></h5>
-            <p class="text-muted mb-1"><?php echo $row['case_name']?></p>
-            <p class="text-muted mb-4"><?php echo $row['address']?></p>
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Edit profile</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-            </div>
-          </div>
-          
-        </div>
-
-      </div>
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
@@ -60,10 +44,10 @@ if (mysqli_num_rows($run_query)>0) {
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Specialization</p>
+                <p class="mb-0">Age</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $row['case_name']?></p>
+                <p class="text-muted mb-0"><?php echo $row['age']?></p>
               </div>
             </div>
             <hr>
@@ -84,18 +68,7 @@ if (mysqli_num_rows($run_query)>0) {
                 <p class="text-muted mb-0"><?php echo $row['phone']?></p>
               </div>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Experience</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $row['experience'] ?>Years</p>
-              </div>
-            </div>
-            <hr>
-            
-            
+            <hr>            
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Address</p>
