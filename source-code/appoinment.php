@@ -1,27 +1,32 @@
 <?php
 // session_start();
-include("header.php");
+// include("header.php");
 include("config.php");
 
 
-if (isset($_POST['submit'])) {  
-    $app_name=$_POST['name'];
-    $app_email=$_POST['email'];
-    $app_date=$_POST['date'];
-    $app_time=$_POST['time'];
-    $app_case=$_POST['case'];
-    
-    $appoinment="INSERT INTO `appoinment`(`name`,`email`,`case`,`date`,`time`) values('$app_name','$app_email',$app_case,'$app_date','$app_time')";
-    $run=mysqli_query($connection,$appoinment);
-    
-    if ($run) {
-        echo "<script>alert('Appoinment Booked')
-        window.location.href='index.php'
-        </script>";
+
+
+
+    if (isset($_POST['submit'])) {  
+        $lawyer_id = $_POST['lawyer_id'];
+echo $lawyer_id;
+// die();
+        $app_name = $_POST['name'];
+        $app_email = $_POST['email'];
+        $app_date = $_POST['date'];
+        $app_time = $_POST['time'];
+        $app_case = $_POST['case'];
+
+        $appoinment = "INSERT INTO `appoinment`(`name`, `lawyer_id`, `email`, `case`, `date`, `time`) VALUES ('$app_name', '$lawyer_id', '$app_email', '$app_case', '$app_date', '$app_time')";
+        $run = mysqli_query($connection, $appoinment);
+
+        if ($run) {
+            echo "<script>alert('Appointment Booked')
+            window.location.href='index.php'
+            </script>";
+        }
     }
 
-    
-}
 
 ?>
 
@@ -36,6 +41,7 @@ if (isset($_POST['submit'])) {
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                                    <input type="hidden" name="lawyer_id" class="form-control border-0 p-4" placeholder="Your Name" required="required" value="<?php echo $lawyer_id ?>" />
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
@@ -59,15 +65,15 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <select class="custom-select border-0 px-4" name="case" style="height: 47px;">
                                     <option selected>Services</option>
-              <?php
-   $fetch="SELECT *from`cases`";
-  $conn=mysqli_query($connection,$fetch);
-  if (mysqli_num_rows($conn)>0) {
-    while ($row=mysqli_fetch_assoc($conn)) { 
-     echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
-      
-    }}
-  ?>
+                                            <?php
+                                $fetch="SELECT *from`cases`";
+                                $conn=mysqli_query($connection,$fetch);
+                                if (mysqli_num_rows($conn)>0) {
+                                    while ($row=mysqli_fetch_assoc($conn)) { 
+                                    echo '<option value="'.$row['cid'].'">'.$row['case_name'].'</option>';
+                                    
+                                    }}
+                                ?>
                                     </select>
                                 </div>
                                 <div>
@@ -86,6 +92,7 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 <?php
+
 include("footer.php");
 ?>
 

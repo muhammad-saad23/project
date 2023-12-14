@@ -101,6 +101,7 @@ if (mysqli_num_rows($run_select)) {
                 <div class="row ">
         <?php
         while ($row=mysqli_fetch_assoc($run_select)) {
+            $_SESSION['lawyer_id'] = $row['id'];
         ?>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                         <div class="card">
@@ -109,7 +110,7 @@ if (mysqli_num_rows($run_select)) {
                                 <h3 class="card-title"><?php echo $row['name']?></h3>
                                 <p class="text-muted"><?php echo $row['case_name']?></p>
                             </div>
-                            <a href="lawyertemp.php?id=<?php echo $row['id']?>" class="btn btn-primary">View Profile</a>
+                            <a href="lawyertemp.php?id=<?php echo $_SESSION['lawyer_id']?>" class="btn btn-primary">View Profile</a>
                         </div>
                     </div>
 

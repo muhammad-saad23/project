@@ -2,7 +2,7 @@
 include("header.php");
 include("config.php");
 
-$id=$_GET['id'];
+$id = $_GET['id'];
 $fetch_data="SELECT*FROM `lawyer` as l inner join `cases` as c on l.case=c.cid where id='$id'";
 $run=mysqli_query($connection,$fetch_data);
 if (mysqli_num_rows($run)) {

@@ -5,8 +5,10 @@ include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
+$lawyer_id = $_SESSION['lawyer_id'];
 
-$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid";
+
+$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid where `lawyer_id` = '$lawyer_id'";
 $view=mysqli_query($connection,$select_app);
 
 if (mysqli_num_rows($view)>0) {
@@ -26,7 +28,6 @@ if (mysqli_num_rows($view)>0) {
     <table id="example" class="table table-striped" style="width:100%">
         <thead class="bg-warning p-2 text-dark bg-opacity-10" style="opacity: 75%;">
             <tr>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Date</th>
@@ -43,7 +44,6 @@ if (mysqli_num_rows($view)>0) {
             
             ?>
             <tr>
-            <th scope="row"><?php echo $data['id']?></th>
             <th scope="row"><?php echo $data['name']?></th>
             <td><?php echo $data['email']?></td>
             <td><?php echo $data['date']?></td>
