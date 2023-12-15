@@ -1,25 +1,19 @@
 <?php
 // session_start();
-// include("header.php");
+include("header.php");
 include("config.php");
 
 
-
-
-
     if (isset($_POST['submit'])) {  
-        $lawyer_id = $_POST['lawyer_id'];
-echo $lawyer_id;
-// die();
+        // $lawyer_id = $_POST['lawyer_id'];
         $app_name = $_POST['name'];
         $app_email = $_POST['email'];
         $app_date = $_POST['date'];
         $app_time = $_POST['time'];
         $app_case = $_POST['case'];
 
-        $appoinment = "INSERT INTO `appoinment`(`name`, `lawyer_id`, `email`, `case`, `date`, `time`) VALUES ('$app_name', '$lawyer_id', '$app_email', '$app_case', '$app_date', '$app_time')";
-        $run = mysqli_query($connection, $appoinment);
-
+        $appoinment="INSERT INTO `appoinment`(`name`,`email`,`case`,`date`,`time`) values('$app_name','$app_email','$app_case','$app_date','$app_time')";
+        $run=mysqli_query($connection,$appoinment);
         if ($run) {
             echo "<script>alert('Appointment Booked')
             window.location.href='index.php'
@@ -41,7 +35,8 @@ echo $lawyer_id;
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
-                                    <input type="hidden" name="lawyer_id" class="form-control border-0 p-4" placeholder="Your Name" required="required" value="<?php echo $lawyer_id ?>" />
+                                    
+                                    
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
@@ -95,5 +90,3 @@ echo $lawyer_id;
 
 include("footer.php");
 ?>
-
-

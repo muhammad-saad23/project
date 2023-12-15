@@ -5,10 +5,10 @@ include('includes/topbar.php');
 include('includes/sidebar.php');
 include("../config.php");
 
-$lawyer_id = $_SESSION['lawyer_id'];
+// $lawyer_id = $_SESSION['lawyer_id'];
 
 
-$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid where `lawyer_id` = '$lawyer_id'";
+$select_app="SELECT *FROM `appoinment` as a inner join `cases` as c on a.case=c.cid";
 $view=mysqli_query($connection,$select_app);
 
 if (mysqli_num_rows($view)>0) {
